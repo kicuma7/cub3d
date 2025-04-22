@@ -6,16 +6,16 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 09:36:42 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/04/22 10:57:33 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/04/22 11:17:12 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static void	put_map_to_screen(char **map)
+/*static void	put_map_to_screen(char **map, t_img *img)
 {
-	(void)map;
-}
+
+}*/
 
 static int	get_map_hei(char *mapfilename)
 {
@@ -63,6 +63,6 @@ int	build_map(t_mlx *mlx, char *mapfilename)
 			mlx->map[i] = get_next_line(fd);
 		}
 	}
-	put_map_to_screen(mlx->map);
+	//put_map_to_screen(mlx->map);
 	return (0);
 }

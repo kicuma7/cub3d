@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 10:35:02 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/04/22 10:52:43 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/04/22 11:18:41 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@
 # include <stdbool.h>
 # include <stdio.h>
 
+typedef struct	s_img
+{
+	int		size_line;
+	void	*img;
+	int		*img_addr;
+}			t_img;
+
 typedef struct	s_mlx
 {
 	int		map_wid;
@@ -30,10 +37,11 @@ typedef struct	s_mlx
 	void	*con;
 	void	*win;
 	char	**map;
+	t_img	*img;
 }				t_mlx;
 
-
-int	mlx_destroy_all(t_mlx *mlx);
-int	build_map(t_mlx *mlx, char *mapfilename);
+int		mlx_destroy_all(t_mlx *mlx);
+int		build_map(t_mlx *mlx, char *mapfilename);
+void	init_image(t_img *img, size_t wid, size_t hei, t_mlx *mlx);
 
 #endif

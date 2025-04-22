@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   pixels.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 09:17:57 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/04/22 11:19:24 by jquicuma         ###   ########.fr       */
+/*   Created: 2025/04/22 10:59:44 by jquicuma          #+#    #+#             */
+/*   Updated: 2025/04/22 11:18:23 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-static void	free_map(char **map)
+void	init_image(t_img *img, size_t wid, size_t hei, t_mlx *mlx)
 {
-	int	i;
-
-	i = 0;
-	while (map[i])
-		free(map[i++]);
-	free(map);
-}
-
-int	mlx_destroy_all(t_mlx *mlx)
-{
-	mlx_destroy_window(mlx->con, mlx->win);
-	mlx_destroy_image(mlx->con, mlx->img->img);
-	mlx_destroy_display(mlx->con);
-	free_map(mlx->map);
-	free(mlx->con);
-	exit(EXIT_SUCCESS);
-	return (0);
+	img->img = mlx_new_image(mlx->con, wid, hei);
+	img->img_addr = (int *)mlx_get_data_addr(img->img, &(int){0}, \
+					&img->size_line, &(int){0});
+	mlx->img = img;
 }

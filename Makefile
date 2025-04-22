@@ -10,7 +10,8 @@ SRC_DIR = ./src/
 
 FILE =	main \
 		free \
-		map
+		map \
+		pixels
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(FILE)))
 
