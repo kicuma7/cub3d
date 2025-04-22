@@ -10,8 +10,10 @@ SRC_DIR = ./src/
 
 FILE =	main \
 		free \
-		map \
 		pixels
+
+FILE += $(addprefix 2d/,	map2d \
+							player2d)
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(FILE)))
 

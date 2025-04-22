@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map2d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 09:36:42 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/04/22 12:36:33 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/04/22 13:10:19 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 static void	fill_square(t_img *img, int wid, int hei, int color)
 {
@@ -32,8 +32,9 @@ static void	fill_square(t_img *img, int wid, int hei, int color)
 
 void	put_map_to_screen(char **map, t_img *img, t_mlx *mlx)
 {
-	int	hei;
-	int	wid;
+	static bool	get_initial_player_pos = true;
+	int			hei;
+	int			wid;
 
 	hei = 0;
 	while (map[hei])
@@ -43,6 +44,14 @@ void	put_map_to_screen(char **map, t_img *img, t_mlx *mlx)
 		{
 			if (map[hei][wid] == '1')
 				fill_square(img, wid * PIXELS, hei * PIXELS, MAP_COLOR);
+			else if ((map[hei][wid] == 'N' || map[hei][wid] == 'S' \
+					|| map[hei][wid] == 'O' || map[hei][wid] == 'E') \
+					&& get_initial_player_pos)
+			{
+				mlx->player_pos_wid = wid;
+				mlx->player_pos_hei = hei;
+				get_initial_player_pos = false;
+			}
 			wid++;
 		}
 		hei++;
