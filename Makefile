@@ -9,6 +9,8 @@ MLX_DIR = ./libs/mlx
 SRC_DIR = ./src/
 
 FILE =	main \
+		free \
+		map
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(FILE)))
 
@@ -30,6 +32,8 @@ re: fclean all
 	make re -C $(MLX_DIR)
 
 run: re
+	clear
 	$(CC) $(SRC) $(CFLAGS) $(LIBFLAGS) -o $(NAME)
+	valgrind ./cub3d simplemap
 
 .PHONY: all clean fclean

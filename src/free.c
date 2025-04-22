@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/21 10:35:02 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/04/22 10:52:43 by jquicuma         ###   ########.fr       */
+/*   Created: 2025/04/22 09:17:57 by jquicuma          #+#    #+#             */
+/*   Updated: 2025/04/22 10:01:58 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../includes/cub3d.h"
 
-# include "../libs/libft/libft.h"
-# include "../libs/mlx/mlx.h"
-
-# define ERROR_CODE -1
-# define PIXELS 20
-
-# include <unistd.h>
-# include <stdbool.h>
-# include <stdio.h>
-
-typedef struct	s_mlx
+static void	free_map(char **map)
 {
-	int		map_wid;
-	int		map_hei;
-	void	*con;
-	void	*win;
-	char	**map;
-}				t_mlx;
+	int	i;
 
+	i = 0;
+	while (map[i])
+		free(map[i++]);
+	free(map);
+}
 
-int	mlx_destroy_all(t_mlx *mlx);
-int	build_map(t_mlx *mlx, char *mapfilename);
-
-#endif
+int	mlx_destroy_all(t_mlx *mlx)
+{
+	mlx_destroy_window(mlx->con, mlx->win);
+	mlx_destroy_display(mlx->con);
+	free_map(mlx->map);
+	free(mlx->con);
+	exit(EXIT_SUCCESS);
+	return (0);
+}
