@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 10:35:02 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/04/22 11:18:41 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/04/22 12:48:39 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # define ERROR_CODE -1
 # define PIXELS 20
+# define MAP_COLOR 0x00FF00
 
 # include <unistd.h>
 # include <stdbool.h>
@@ -43,5 +44,7 @@ typedef struct	s_mlx
 int		mlx_destroy_all(t_mlx *mlx);
 int		build_map(t_mlx *mlx, char *mapfilename);
 void	init_image(t_img *img, size_t wid, size_t hei, t_mlx *mlx);
+void	pixel_put(t_img *img, int wid_x, int hei_y, int color);
+void	put_map_to_screen(char **map, t_img *img, t_mlx *mlx);
 
 #endif
