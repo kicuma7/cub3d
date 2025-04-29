@@ -6,13 +6,13 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 09:36:42 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/04/22 13:10:19 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/04/24 08:35:41 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	fill_square(t_img *img, int wid, int hei, int color)
+void	fill_square(t_img *img, int wid, int hei, int color)
 {
 	int	i;
 	int	j;
@@ -23,7 +23,8 @@ static void	fill_square(t_img *img, int wid, int hei, int color)
 		j = 0;
 		while (j < PIXELS)
 		{
-			pixel_put(img, wid + i, hei + j, color);
+			if (j == 0 || i == 0 || (j + 1) == PIXELS || (i + 1) == PIXELS)
+				pixel_put(img, wid + i, hei + j, color);
 			j++;
 		}
 		i++;

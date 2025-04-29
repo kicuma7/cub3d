@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 10:59:44 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/04/22 13:17:14 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/04/23 09:37:29 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,24 @@ void	pixel_put(t_img *img, int wid_x, int hei_y, int color)
 
 	i = wid_x + (hei_y * (img->size_line / 4));
 	img->img_addr[i] = color;
+}
+
+void	clear_screen(t_img *img, int screen_wid, int screen_hei)
+{
+	int	wid;
+	int	hei;
+
+	hei = 0;
+	while (hei < screen_hei)
+	{
+		wid = 0;
+		while (wid < screen_wid)
+		{
+			pixel_put(img, wid, hei, 0x000000);
+			wid++;
+		}
+		hei++;
+	}
 }
 
 void	init_image(t_img *img, size_t wid, size_t hei, t_mlx *mlx)
