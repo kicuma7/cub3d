@@ -8,7 +8,9 @@ SRC_F = ./src/
 
 OBJ_F = ./.obj/
 
-FILES = main
+FILES = main \
+		tmp_file \
+		free
 
 SRCS = $(addprefix $(SRC_F), $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix $(OBJ_F), $(addsuffix .o, $(FILES)))
@@ -37,5 +39,8 @@ re: mlx_re fclean all
 
 mlx_re:
 	make re -C libs/mlx
+
+run: all
+	valgrind ./cub3d assets/maps/map.cub
 
 .PHONY: all clean fclean re
