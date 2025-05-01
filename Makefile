@@ -1,3 +1,4 @@
+RM = rm -rf
 NAME = cub3d
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
@@ -13,6 +14,8 @@ SRCS = $(addprefix $(SRC_F), $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix $(OBJ_F), $(addsuffix .o, $(FILES)))
 
 $(NAME): $(OBJS)
+	make -C libs/mlx
+	make -C libs/libft
 	$(CC) $(CFLAGS) $(OBJS) $(LIBS_FLAGS) -o $(NAME)
 
 $(OBJ_F)%.o: $(SRC_F)%.c
@@ -22,11 +25,17 @@ $(OBJ_F)%.o: $(SRC_F)%.c
 all: $(NAME)
 
 clean:
+	make clean -C libs/mlx
+	make clean -C libs/libft
 	$(RM) $(OBJS)
 
 fclean: clean
+	make fclean -C libs/libft
 	$(RM) $(NAME)
 
-re: fclean all
+re: mlx_re fclean all
+
+mlx_re:
+	make re -C libs/mlx
 
 .PHONY: all clean fclean re
