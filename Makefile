@@ -10,7 +10,8 @@ OBJ_F = ./.obj/
 
 FILES = main \
 		tmp_file \
-		free
+		free \
+		image
 
 SRCS = $(addprefix $(SRC_F), $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix $(OBJ_F), $(addsuffix .o, $(FILES)))
@@ -44,3 +45,20 @@ run: all
 	valgrind ./cub3d assets/maps/map.cub
 
 .PHONY: all clean fclean re
+
+
+### 🟣 macOS-specific flags (MiniLibX OpenGL + AppKit)
+MAC_LIBS_FLAGS = -framework OpenGL -framework AppKit \
+				-I./libs/mlx_opengl -L./libs/mlx_opengl -lmlx \
+				-I./libs/libft -L./libs/libft -lft
+
+### Compilar Cub3D no macOS
+mac: $(OBJS)
+	make -C libs/mlx_opengl
+	make -C libs/libft
+	$(CC) $(CFLAGS) $(OBJS) $(MAC_LIBS_FLAGS) -o $(NAME)
+
+### Compilar arquivos .c para .o no macOS
+$(OBJ_F)%.o: $(SRC_F)%.c
+	mkdir -p $(OBJ_F)
+	$(CC) $(CFLAGS) -I./libs/mlx -I./libs/libft -c $< -o $@

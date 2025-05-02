@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:04:27 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/01 12:11:34 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/02 12:17:29 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ int	close_and_free(t_mlx *mlx)
 {
 	free_map(mlx->map);
 	mlx_destroy_window(mlx->con, mlx->win);
-	mlx_destroy_display(mlx->con);
+	#ifdef __linux__
+		mlx_destroy_display(mlx);
+	#endif
+	//mlx_destroy_display(mlx->con);
 	free(mlx->con);
 	exit(EXIT_SUCCESS);
 	return (0);

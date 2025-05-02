@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:32:03 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/01 12:19:18 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/02 12:45:29 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@
 # define PIXELS 20
 # define ESC 65307
 
+typedef struct	s_img
+{
+	void		*img;
+	int			size_line;
+	int			*img_addr;
+	size_t		pixels_wid;
+	size_t		pixels_hei;
+}				t_img;
+
 typedef struct	s_map
 {
 	char		**map;
@@ -38,8 +47,11 @@ typedef struct	s_mlx
 	void		*con;
 	void		*win;
 	t_map		*map;
+	t_img		*img;
 }				t_mlx;
 
 int		close_and_free(t_mlx *mlx);
+void	init_image(t_mlx *mlx);
+void	pixels_put(t_img *img, double x, double y, int color);
 
 #endif
