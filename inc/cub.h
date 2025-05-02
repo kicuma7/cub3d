@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:32:03 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/02 12:45:29 by user             ###   ########.fr       */
+/*   Updated: 2025/05/02 13:15:28 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct	s_mlx
 
 int		close_and_free(t_mlx *mlx);
 void	init_image(t_mlx *mlx);
-void	pixels_put(t_img *img, double x, double y, int color);
+void	pixel_put(t_img *img, double x, double y, int color);
+void	draw_map2d(t_map *map, t_img *img);
 
 #endif

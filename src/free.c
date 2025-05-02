@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:04:27 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/02 12:17:29 by user             ###   ########.fr       */
+/*   Updated: 2025/05/02 13:23:28 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ int	close_and_free(t_mlx *mlx)
 {
 	free_map(mlx->map);
 	mlx_destroy_window(mlx->con, mlx->win);
+	mlx_destroy_image(mlx->con, mlx->img->img);
 	#ifdef __linux__
 		mlx_destroy_display(mlx);
 	#endif
-	//mlx_destroy_display(mlx->con);
 	free(mlx->con);
+	free(mlx->img);
 	exit(EXIT_SUCCESS);
 	return (0);
 }

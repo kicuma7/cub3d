@@ -11,7 +11,8 @@ OBJ_F = ./.obj/
 FILES = main \
 		tmp_file \
 		free \
-		image
+		image \
+		draw_map2d
 
 SRCS = $(addprefix $(SRC_F), $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix $(OBJ_F), $(addsuffix .o, $(FILES)))

@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 12:21:02 by user              #+#    #+#             */
-/*   Updated: 2025/05/02 12:45:18 by user             ###   ########.fr       */
+/*   Updated: 2025/05/02 13:15:16 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_image(t_mlx *mlx)
 	mlx->img = img;
 }
 
-void	pixels_put(t_img *img, double x, double y, int color)
+void	pixel_put(t_img *img, double x, double y, int color)
 {
 	int	i;
 
