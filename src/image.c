@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 12:21:02 by user              #+#    #+#             */
-/*   Updated: 2025/05/02 13:15:16 by user             ###   ########.fr       */
+/*   Updated: 2025/05/04 09:53:02 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,30 @@ void	init_image(t_mlx *mlx)
 	img->img_addr = (int *)mlx_get_data_addr(img->img, &(int){0}, \
 					&img->size_line, &(int){0});
 	mlx->img = img;
+}
+
+void	draw_line(t_cordenate begin, t_cordenate end, t_img *img, int color)
+{
+	double		pixels;
+	t_cordenate	delta;
+	t_cordenate	pixel;
+
+	delta.x = end.x - begin.x;
+	delta.y = end.y - begin.y;
+	pixels = sqrt((delta.x * delta.x) + (delta.y * delta.y));
+	if (pixels == 0)
+		return ;
+	delta.x /= pixels;
+	delta.y /= pixels;
+	pixel.x = begin.x;
+	pixel.y = begin.y;
+	while (pixels > 0)
+	{
+		pixel_put(img, (int)pixel.x, (int)pixel.y, color);
+		pixel.x += delta.x;
+		pixel.y += delta.y;
+		pixels--;
+	}
 }
 
 void	pixel_put(t_img *img, double x, double y, int color)

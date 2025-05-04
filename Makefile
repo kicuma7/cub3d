@@ -12,7 +12,8 @@ FILES = main \
 		tmp_file \
 		free \
 		image \
-		draw_map2d
+		draw_map2d \
+		player2d
 
 SRCS = $(addprefix $(SRC_F), $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix $(OBJ_F), $(addsuffix .o, $(FILES)))
@@ -58,6 +59,7 @@ mac: $(OBJS)
 	make -C libs/mlx_opengl
 	make -C libs/libft
 	$(CC) $(CFLAGS) $(OBJS) $(MAC_LIBS_FLAGS) -o $(NAME)
+	./cub3d
 
 ### Compilar arquivos .c para .o no macOS
 $(OBJ_F)%.o: $(SRC_F)%.c
