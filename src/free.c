@@ -14,7 +14,7 @@
 
 static void	free_map(t_map *map)
 {
-	size_t	i;
+	int	i;
 
 	if (!map || !map->map)
 		return ;

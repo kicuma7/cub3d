@@ -69,6 +69,7 @@ FILES = ft_atoi \
 			ft_strrchr \
 			ft_strtrim \
 			ft_substr \
+			ft_strncpy \
 			ft_tolower \
 			ft_toupper \
 			ft_lstnew \

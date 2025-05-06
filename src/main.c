@@ -12,7 +12,7 @@
 
 #include "../inc/cub.h"
 
-void	tmp_map(t_map *map, const char *filename);
+void		tmp_map(t_map *map, const char *filename);
 
 static int	pressed_key(int keycode, t_mlx *mlx)
 {
@@ -26,16 +26,14 @@ int	main(int ac, char **av)
 	t_mlx	mlx;
 	t_map	map;
 
-	//LINHA PARA APLICAR A VALIDACAO TODA DO MAPA
+	// LINHA PARA APLICAR A VALIDACAO TODA DO MAPA
 	if (ac < 2)
 		return (0);
-	tmp_map(&map, av[1]); // LINHA TEMPORARIA PARA SUBSTITUIR COM A VALIDACAO
-	//TRAZER TAMBEM TODOS OS DADOS NECESSARIOS DO MAPA DENTRO DA ESTRUTURA T_MAP
-
+	validation_map(av[1], &map, &mlx);
 	mlx.map = &map;
 	mlx.con = mlx_init();
-	mlx.win = mlx_new_window(mlx.con, map.pixels_wid, map.pixels_hei, "CUB3D");
+	mlx.win = mlx_new_window(mlx.con, 500, 500 , "CUB3D");
 	mlx_hook(mlx.win, 17, 0, &close_and_free, &mlx);
-	mlx_hook(mlx.win, 2, 1L<<0, &pressed_key, &mlx);
+	mlx_hook(mlx.win, 2, 1L << 0, &pressed_key, &mlx);
 	mlx_loop(mlx.con);
 }
