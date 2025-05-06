@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 12:21:02 by user              #+#    #+#             */
-/*   Updated: 2025/05/04 09:53:02 by user             ###   ########.fr       */
+/*   Updated: 2025/05/04 10:24:15 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	init_image(t_mlx *mlx)
 	mlx->img = img;
 }
 
-void	draw_line(t_cordenate begin, t_cordenate end, t_img *img, int color)
+void	draw_line(t_point begin, t_point end, t_img *img, int color)
 {
 	double		pixels;
-	t_cordenate	delta;
-	t_cordenate	pixel;
+	t_point	delta;
+	t_point	pixel;
 
 	delta.x = end.x - begin.x;
 	delta.y = end.y - begin.y;

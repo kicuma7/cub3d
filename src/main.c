@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:34:32 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/04 09:28:08 by user             ###   ########.fr       */
+/*   Updated: 2025/05/04 10:38:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ int	main(int ac, char **av)
 	draw_map2d(mlx.map, mlx.img, &player);
 	mlx.player = init_player(&player);
 	draw_player2d(&mlx, &player);
+	pixel_put(mlx.img, (int)player.center.x, (int)player.center.y, 0xFF0000);
+	printf("X: %f\nY: %f\n", player.center.x, player.center.y);
+	printf("X: %f\nY: %f\n", player.point_a.x, player.point_a.y);
 	mlx_put_image_to_window(mlx.con, mlx.win, mlx.img->img, 0, 0);
 	mlx_hook(mlx.win, 17, 0, &close_and_free, &mlx);
 	mlx_hook(mlx.win, 2, 1L<<0, &pressed_key, &mlx);

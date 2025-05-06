@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:32:03 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/04 09:56:15 by user             ###   ########.fr       */
+/*   Updated: 2025/05/04 10:26:09 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,20 @@
 # define PIXELS 40
 # define ESC 65307
 
-typedef	struct	s_cordenate
+typedef	struct	s_point
 {
 	double	x;
 	double	y;
-}				t_cordenate;
+}				t_point;
 
 typedef struct	s_player
 {
 	double		pos_x;
 	double		pos_y;
-	t_cordenate	point_a;
-	t_cordenate	point_b;
-	t_cordenate	point_c;
+	t_point	point_a;
+	t_point	point_b;
+	t_point	point_c;
+	t_point	center;
 	char		cardinal_point;
 }				t_player;
 
@@ -75,6 +76,6 @@ void		pixel_put(t_img *img, double x, double y, int color);
 void		draw_map2d(t_map *map, t_img *img, t_player *player);
 void		draw_player2d(t_mlx *mlx, t_player *player);
 t_player	*init_player(t_player *player);
-void		draw_line(t_cordenate begin, t_cordenate end, t_img *img, int color);
+void		draw_line(t_point begin, t_point end, t_img *img, int color);
 
 #endif

@@ -65,3 +65,9 @@ mac: $(OBJS)
 $(OBJ_F)%.o: $(SRC_F)%.c
 	mkdir -p $(OBJ_F)
 	$(CC) $(CFLAGS) -I./libs/mlx -I./libs/libft -c $< -o $@
+
+re_mac:
+	make clean -C libs/mlx_opengl
+	make fclean -C libs/libft
+	$(RM) $(OBJS) $(NAME)
+	make mac
