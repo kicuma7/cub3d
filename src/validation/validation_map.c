@@ -73,7 +73,7 @@ void	validation_color(t_map *cub)
 		free(rest_c[i]);
 		i++;
 	}
-	if(i > 3)
+	if (i > 3)
 		error("\033[31minvalid color \033[0m");
 	i = 0;
 	while (rest_f[i] != NULL)
@@ -83,7 +83,7 @@ void	validation_color(t_map *cub)
 		free(rest_f[i]);
 		i++;
 	}
-	if(i > 3)
+	if (i > 3)
 		error("\033[31minvalid color \033[0m");
 	free(rest_c);
 	free(rest_f);
