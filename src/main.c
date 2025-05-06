@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:34:32 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/04 10:38:42 by user             ###   ########.fr       */
+/*   Updated: 2025/05/06 08:28:27 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ int	main(int ac, char **av)
 	//	return (0);
 	(void)ac;
 	(void)av;
-	tmp_map(&map, "/Users/user/dev/cub3d/assets/maps/map.cub"); // LINHA TEMPORARIA PARA SUBSTITUIR COM A VALIDACAO
+	//tmp_map(&map, "/Users/user/dev/cub3d/assets/maps/map.cub");
+	tmp_map(&map, "/home/jquicuma/dev/cub3d/assets/maps/map.cub");
+	// LINHA TEMPORARIA PARA SUBSTITUIR COM A VALIDACAO
 	//TRAZER TAMBEM TODOS OS DADOS NECESSARIOS DO MAPA DENTRO DA ESTRUTURA T_MAP
 
 	mlx.map = &map;

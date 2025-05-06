@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player2d.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:27:19 by user              #+#    #+#             */
-/*   Updated: 2025/05/04 10:41:06 by user             ###   ########.fr       */
+/*   Updated: 2025/05/06 08:23:13 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_player	*init_player(t_player *player)
 {
 	int	pixels_player;
 
-	pixels_player = PIXELS;
+	pixels_player = PIXELS / 2;
 	player->point_a.x = player->pos_x + (pixels_player / 4);
 	player->point_a.y = player->pos_y;
 	player->point_b.x = player->pos_x;
