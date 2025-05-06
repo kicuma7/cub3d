@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:32:03 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/06 08:44:00 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/06 08:50:32 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ typedef struct	s_img
 	size_t		pixels_hei;
 }				t_img;
 
-typedef struct	s_map
 typedef struct s_map
 {
 	int		hei;
@@ -63,16 +62,22 @@ typedef struct s_map
 	size_t	max_len;
 	size_t	pixels_wid;
 	size_t	pixels_hei;
-
 }			t_map;
 
 typedef struct s_mlx
 {
 	void		*con;
 	void		*win;
+	int			floor_set;
+	int			ceiling_set;
+	int			found_no;
+	int			found_so;
+	int			found_we;
+	int			found_ea;
+	int			i;
 	t_map		*map;
-	t_img		*img;
 	t_player	*player;
+	t_img		*img;
 }				t_mlx;
 
 int			close_and_free(t_mlx *mlx);
@@ -82,19 +87,6 @@ void		draw_map2d(t_map *map, t_img *img, t_player *player);
 void		draw_player2d(t_mlx *mlx, t_player *player);
 t_player	*init_player(t_player *player);
 void		draw_line(t_point begin, t_point end, t_img *img, int color);
-	void	*con;
-	void	*win;
-	int		floor_set;
-	int		ceiling_set;
-	int		found_no;
-	int		found_so;
-	int		found_we;
-	int		found_ea;
-	int		i;
-	t_map	*map;
-}			t_mlx;
-
-int			close_and_free(t_mlx *mlx);
 void		read_texture(char *path, t_map *cub);
 void		read_color(char *path, t_map *cub, t_mlx *var);
 void		read_map(char *path, t_map *cub);

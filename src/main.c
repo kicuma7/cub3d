@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:34:32 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/06 08:43:34 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/06 08:59:58 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,13 @@ int	main(int ac, char **av)
 	(void)ac;
 	(void)av;
 	//tmp_map(&map, "/Users/user/dev/cub3d/assets/maps/map.cub");
-	tmp_map(&map, "/home/jquicuma/dev/cub3d/assets/maps/map.cub");
+	//tmp_map(&map, "/home/jquicuma/dev/cub3d/assets/maps/map.cub");
 	// LINHA TEMPORARIA PARA SUBSTITUIR COM A VALIDACAO
 	//TRAZER TAMBEM TODOS OS DADOS NECESSARIOS DO MAPA DENTRO DA ESTRUTURA T_MAP
 
+	if (ac < 2)
+		return (0);
+	validation_map(av[1], &map, &mlx);
 	mlx.map = &map;
 	mlx.con = mlx_init();
 	init_image(&mlx);
@@ -48,10 +51,6 @@ int	main(int ac, char **av)
 	printf("X: %f\nY: %f\n", player.center.x, player.center.y);
 	printf("X: %f\nY: %f\n", player.point_a.x, player.point_a.y);
 	mlx_put_image_to_window(mlx.con, mlx.win, mlx.img->img, 0, 0);
-	// LINHA PARA APLICAR A VALIDACAO TODA DO MAPA
-	if (ac < 2)
-		return (0);
-	validation_map(av[1], &map, &mlx);
 	mlx.map = &map;
 	mlx.con = mlx_init();
 	mlx.win = mlx_new_window(mlx.con, 500, 500 , "CUB3D");
