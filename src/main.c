@@ -32,7 +32,7 @@ int	main(int ac, char **av)
 	validation_map(av[1], &map, &mlx);
 	mlx.map = &map;
 	mlx.con = mlx_init();
-	mlx.win = mlx_new_window(mlx.con, 500, 500 , "CUB3D");
+	mlx.win = mlx_new_window(mlx.con, 500, 500, "CUB3D");
 	mlx_hook(mlx.win, 17, 0, &close_and_free, &mlx);
 	mlx_hook(mlx.win, 2, 1L << 0, &pressed_key, &mlx);
 	mlx_loop(mlx.con);

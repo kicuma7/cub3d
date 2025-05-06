@@ -51,19 +51,15 @@ void	file_validation(t_map *cub, t_mlx *var)
 		error("\033[31mMissing identifiers\033[0m");
 }
 
-void	validation_color(t_map *cub)
+void	validation_color_c(t_map *cub)
 {
 	char	*c;
-	char	*f;
 	char	**rest_c;
-	char	**rest_f;
 	int		i;
 
-	if (cub->color[0][0] == 'F')
-		f = cub->color[0] + 2;
+	validation_color_f(cub);
 	if (cub->color[1][0] == 'C')
 		c = cub->color[1] + 2;
-	rest_f = ft_split(f, ',');
 	rest_c = ft_split(c, ',');
 	i = 0;
 	while (rest_c[i] != NULL)
@@ -75,6 +71,18 @@ void	validation_color(t_map *cub)
 	}
 	if (i > 3)
 		error("\033[31minvalid color \033[0m");
+	free(rest_c);
+}
+
+void	validation_color_f(t_map *cub)
+{
+	int		i;
+	char	*f;
+	char	**rest_f;
+
+	if (cub->color[0][0] == 'F')
+		f = cub->color[0] + 2;
+	rest_f = ft_split(f, ',');
 	i = 0;
 	while (rest_f[i] != NULL)
 	{
@@ -85,6 +93,5 @@ void	validation_color(t_map *cub)
 	}
 	if (i > 3)
 		error("\033[31minvalid color \033[0m");
-	free(rest_c);
 	free(rest_f);
 }

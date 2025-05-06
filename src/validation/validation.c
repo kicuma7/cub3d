@@ -19,7 +19,7 @@ void	validation_map(char *path, t_map *cub, t_mlx *var)
 	read_texture(path, cub);
 	validate_map_all(cub);
 	file_validation(cub, var);
-	validation_color(cub);
+	validation_color_c(cub);
 }
 
 void	validate_map_all(t_map *cub)
@@ -32,22 +32,15 @@ void	validate_map_all(t_map *cub)
 int	horizontal_map(t_map *cub)
 {
 	int	j;
-	int	t;
 
-	t = 0;
+	if (!cub->map || cub->hei < 2 || cub->wid < 1)
+		error("\033[31mInvalid map dimensions\033[0m");
 	j = 0;
 	while (j < cub->wid)
 	{
 		if (cub->map[0][j] == '0' || cub->map[cub->hei - 1][j] == '0')
 			return (0);
 		j++;
-	}
-	while (cub->texture[t] != NULL)
-		t++;
-	if (t > 4)
-	{
-		printf("\033[31m error with map format \033[0m");
-		exit(1);
 	}
 	return (1);
 }
@@ -57,20 +50,17 @@ int	vertical_map(t_map *cub)
 	int	j;
 	int	i;
 
+	if (!cub->map || cub->hei < 1 || cub->wid < 1)
+		error("\033[31mInvalid map dimensions\033[0m");
 	j = 0;
-	i = 0;
 	while (j < cub->hei)
 	{
 		i = 0;
 		while (i < cub->wid)
 		{
-			if (cub->map[j][0] == '0')
+			if (i > 0 && cub->map[j][i] == ' ' && cub->map[j][i - 1] == '0')
 				return (0);
-			if (cub->map[j][i] == ' ' && cub->map[j][i - 1] == '0')
-				return (0);
-			if (cub->map[j][i] == ' ')
-				i++;
-			if (cub->map[j][i - 1] == ' ' && cub->map[j][i] == '0')
+			if (i > 0 && cub->map[j][i - 1] == ' ' && cub->map[j][i] == '0')
 				return (0);
 			i++;
 		}

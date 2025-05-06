@@ -19,17 +19,20 @@ void	read_texture(char *path, t_map *cub)
 
 	i = 0;
 	fd = open(path, O_RDONLY);
-	if (fd == -1)
-		error("\033[31mError File\033[0m");
 	line = get_next_line(fd);
-	if (line == NULL)
-		error("\033[31mError File\033[0m");
-	cub->texture = malloc(sizeof(char *) * 4);
+	cub->texture = malloc(sizeof(char *) * 5);
 	while (line != NULL)
 	{
 		if (line[0] != '\0' && line[0] != ' ' && (line[0] == 'N'
 				|| line[0] == 'S' || line[0] == 'W' || line[0] == 'E'))
-			cub->texture[i++] = ft_strdup(line);
+		{
+			if (i >= 4)
+				error("\033[31mError File\033[0m");
+			cub->texture[i] = ft_strdup(line);
+			if (!cub->texture[i])
+				error("\033[31mError File\033[0m");
+			i++;
+		}
 		free(line);
 		line = get_next_line(fd);
 	}

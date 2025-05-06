@@ -28,9 +28,26 @@ static void	free_map(t_map *map)
 int	close_and_free(t_mlx *mlx)
 {
 	free_map(mlx->map);
+	free_mat(mlx->map->texture);
+	free_mat(mlx->map->color);
 	mlx_destroy_window(mlx->con, mlx->win);
 	mlx_destroy_display(mlx->con);
 	free(mlx->con);
 	exit(EXIT_SUCCESS);
 	return (0);
+}
+
+void	free_mat(char **mat)
+{
+	int	i;
+
+	i = 0;
+	if (mat == NULL || *mat == NULL)
+		return ;
+	while (mat[i])
+	{
+		free(mat[i]);
+		i++;
+	}
+	free(mat);
 }

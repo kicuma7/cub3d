@@ -24,6 +24,10 @@
 # define PIXELS 20
 # define ESC 65307
 
+#ifndef MAX_TEXTURE_PATH
+# define MAX_TEXTURE_PATH 256 // Define o tamanho máximo para o caminho de textura
+#endif
+
 typedef struct s_map
 {
 	int		hei;
@@ -31,6 +35,10 @@ typedef struct s_map
 	char	**map;
 	char	**texture;
 	char	**color;
+	char	*e;
+	char	*s;
+	char 	*w;
+	char 	*n;
 	size_t	max_len;
 	size_t	pixels_wid;
 	size_t	pixels_hei;
@@ -66,10 +74,12 @@ void		process_color_line(char *line, t_map *cub, t_mlx *var);
 void		count(t_map *cub, int width, int heigth);
 void		check_cub(char *map);
 void		file_validation(t_map *cub, t_mlx *var);
-void		validation_color(t_map *cub);
+void		validation_color_f(t_map *cub);
+void		validation_color_c(t_map *cub);
 void		validate_map_all(t_map *cub);
 int			horizontal_map(t_map *cub);
 int			vertical_map(t_map *cub);
 void		caracter_valid(t_map *cub);
+void free_mat(char **mat);
 
 #endif
