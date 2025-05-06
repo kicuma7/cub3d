@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.h                                              :+:      :+:    :+:   */
+/*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:32:03 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/01 12:19:18 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/06 09:37:57 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../../inc/cub.h"
 
 void	read_texture(char *path, t_map *cub)
@@ -106,6 +107,8 @@ void	len_map(t_map *cub)
 	}
 	cub->hei = i;
 	cub->wid = cub->max_len;
+	cub->pixels_wid = cub->wid * PIXELS;
+	cub->pixels_hei = cub->hei * PIXELS;
 }
 
 void	insert_space_map(t_map *cub)

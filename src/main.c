@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:34:32 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/06 08:59:58 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/06 12:56:46 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ int	main(int ac, char **av)
 	//LINHA PARA APLICAR A VALIDACAO TODA DO MAPA
 	//if (ac < 2)
 	//	return (0);
-	(void)ac;
-	(void)av;
+	//(void)ac;
+	//(void)av;
 	//tmp_map(&map, "/Users/user/dev/cub3d/assets/maps/map.cub");
-	//tmp_map(&map, "/home/jquicuma/dev/cub3d/assets/maps/map.cub");
+	//tmp_map(&map, "/home/jquicuma/dev/cub3d/assets/maps/map1.cub");
 	// LINHA TEMPORARIA PARA SUBSTITUIR COM A VALIDACAO
 	//TRAZER TAMBEM TODOS OS DADOS NECESSARIOS DO MAPA DENTRO DA ESTRUTURA T_MAP
 
@@ -48,12 +48,7 @@ int	main(int ac, char **av)
 	mlx.player = init_player(&player);
 	draw_player2d(&mlx, &player);
 	pixel_put(mlx.img, (int)player.center.x, (int)player.center.y, 0xFF0000);
-	printf("X: %f\nY: %f\n", player.center.x, player.center.y);
-	printf("X: %f\nY: %f\n", player.point_a.x, player.point_a.y);
 	mlx_put_image_to_window(mlx.con, mlx.win, mlx.img->img, 0, 0);
-	mlx.map = &map;
-	mlx.con = mlx_init();
-	mlx.win = mlx_new_window(mlx.con, 500, 500 , "CUB3D");
 	mlx_hook(mlx.win, 17, 0, &close_and_free, &mlx);
 	mlx_hook(mlx.win, 2, 1L << 0, &pressed_key, &mlx);
 	mlx_loop(mlx.con);
