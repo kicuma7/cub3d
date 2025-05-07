@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:32:03 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/07 10:14:39 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:45:48 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,15 @@
 # include <stdbool.h>
 # include <math.h>
 
-#ifndef MAX_TEXTURE_PATH
-# define MAX_TEXTURE_PATH 256 // Define o tamanho máximo para o caminho de textura
-#endif
-# define PIXELS 20
+# ifndef MAX_TEXTURE_PATH
+#  define MAX_TEXTURE_PATH 256 // Define o tamanho máximo para o caminho de textura
+# endif
+# define PIXELS 30
 # define ESC 65307
+# define UP 65362
+# define DOWN 65364
+# define LEFT 65361
+# define RIGHT 65363
 
 typedef	struct	s_point
 {
@@ -39,10 +43,7 @@ typedef struct	s_player
 {
 	double		pos_x;
 	double		pos_y;
-	t_point	point_a;
-	t_point	point_b;
-	t_point	point_c;
-	t_point	center;
+	t_point		center;
 	char		cardinal_point;
 }				t_player;
 
@@ -114,6 +115,7 @@ void		validate_map_all(t_map *cub);
 int			horizontal_map(t_map *cub);
 int			vertical_map(t_map *cub);
 void		caracter_valid(t_map *cub);
-void free_mat(char **mat);
+void 		free_mat(char **mat);
+void		clear_screen(t_img *img);
 
 #endif

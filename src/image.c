@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 12:21:02 by user              #+#    #+#             */
-/*   Updated: 2025/05/04 10:24:15 by user             ###   ########.fr       */
+/*   Updated: 2025/05/07 12:46:14 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub.h"
+
+void	clear_screen(t_img *img)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < (int)img->pixels_hei)
+	{
+		j = 0;
+		while (j < (int)img->pixels_wid)
+		{
+			pixel_put(img, j, i, 0x000000);
+			j++;
+		}
+		i++;
+	}
+}
 
 void	init_image(t_mlx *mlx)
 {

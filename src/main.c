@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:34:32 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/07 10:13:34 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/07 12:59:01 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,26 @@ static int	pressed_key(int keycode, t_mlx *mlx)
 {
 	if (keycode == ESC)
 		close_and_free(mlx);
+	else if (keycode == UP)
+	{
+		mlx->player->center.y -= 5;
+	}
+	else if (keycode == DOWN)
+	{
+		mlx->player->center.y += 5;
+	}
+	else if (keycode == LEFT)
+	{
+		mlx->player->center.x -= 5;
+	}
+	else if (keycode == RIGHT)
+	{
+		mlx->player->center.x += 5;
+	}
+	clear_screen(mlx->img);
+	draw_player2d(mlx, mlx->player);
+	draw_map2d(mlx->map, mlx->img, mlx->player);
+	mlx_put_image_to_window(mlx->con, mlx->win, mlx->img->img, 0, 0);
 	return (0);
 }
 
@@ -26,16 +46,6 @@ int	main(int ac, char **av)
 	t_mlx		mlx;
 	t_map		map;
 	t_player	player;
-
-	//LINHA PARA APLICAR A VALIDACAO TODA DO MAPA
-	//if (ac < 2)
-	//	return (0);
-	//(void)ac;
-	//(void)av;
-	//tmp_map(&map, "/Users/user/dev/cub3d/assets/maps/map.cub");
-	//tmp_map(&map, "/home/jquicuma/dev/cub3d/assets/maps/map1.cub");
-	// LINHA TEMPORARIA PARA SUBSTITUIR COM A VALIDACAO
-	//TRAZER TAMBEM TODOS OS DADOS NECESSARIOS DO MAPA DENTRO DA ESTRUTURA T_MAP
 
 	if (ac < 2)
 		return (0);
