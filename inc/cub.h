@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:32:03 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/06 08:50:32 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/07 10:14:39 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@
 # include <stdbool.h>
 # include <math.h>
 
+#ifndef MAX_TEXTURE_PATH
+# define MAX_TEXTURE_PATH 256 // Define o tamanho máximo para o caminho de textura
+#endif
 # define PIXELS 20
 # define ESC 65307
 
-<<<<<<< HEAD
 typedef	struct	s_point
 {
 	double	x;
@@ -52,11 +54,6 @@ typedef struct	s_img
 	size_t		pixels_wid;
 	size_t		pixels_hei;
 }				t_img;
-=======
-#ifndef MAX_TEXTURE_PATH
-# define MAX_TEXTURE_PATH 256 // Define o tamanho máximo para o caminho de textura
-#endif
->>>>>>> domingos
 
 typedef struct s_map
 {

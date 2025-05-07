@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:34:32 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/06 12:56:46 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/07 10:13:34 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	main(int ac, char **av)
 	validation_map(av[1], &map, &mlx);
 	mlx.map = &map;
 	mlx.con = mlx_init();
-<<<<<<< HEAD
 	init_image(&mlx);
 	mlx.win = mlx_new_window(mlx.con, map.pixels_wid, map.pixels_hei, "CUB3D");
 	draw_map2d(mlx.map, mlx.img, &player);
@@ -50,9 +49,6 @@ int	main(int ac, char **av)
 	draw_player2d(&mlx, &player);
 	pixel_put(mlx.img, (int)player.center.x, (int)player.center.y, 0xFF0000);
 	mlx_put_image_to_window(mlx.con, mlx.win, mlx.img->img, 0, 0);
-=======
-	mlx.win = mlx_new_window(mlx.con, 500, 500, "CUB3D");
->>>>>>> domingos
 	mlx_hook(mlx.win, 17, 0, &close_and_free, &mlx);
 	mlx_hook(mlx.win, 2, 1L << 0, &pressed_key, &mlx);
 	mlx_loop(mlx.con);
