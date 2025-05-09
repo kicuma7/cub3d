@@ -70,12 +70,12 @@ static void	draw_square(int player_size, double center_x, double center_y, \
 		j = -half;
 		while (j < half)
 		{
-			pixel_put(img, center_x + j, center_y + i, 0xFF00FF);
+			pixel_put(img, (int)center_x + j, (int)center_y + i, 0xFF00FF);
 			j++;
 		}
 		i++;
 	}
-}
+}	
 
 void	draw_player2d(t_mlx *mlx, t_player *player)
 {

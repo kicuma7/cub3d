@@ -25,6 +25,10 @@ static int	pressed_key(int keycode, t_mlx *mlx)
 	else if (keycode == UP || keycode == DOWN || keycode == LEFT \
 			|| keycode == RIGHT)
 			mov_player(mlx->player, keycode, left_right_angle);
+	else if (keycode == ROT_LEFT)
+		mlx->player->dir_angle += PI / 32;
+	else if (keycode == ROT_RIGHT)
+		mlx->player->dir_angle -= PI / 32;
 	clear_screen(mlx->img);
 	draw_player2d(mlx, mlx->player);
 	draw_map2d(mlx->map, mlx->img, mlx->player);

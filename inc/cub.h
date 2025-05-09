@@ -24,7 +24,7 @@
 # include <math.h>
 
 # ifndef MAX_TEXTURE_PATH
-#  define MAX_TEXTURE_PATH 256 // Define o tamanho máximo para o caminho de textura
+#  define MAX_TEXTURE_PATH 256
 # endif
 # define PIXELS 30
 # define ESC 65307
