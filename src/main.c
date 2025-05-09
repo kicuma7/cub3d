@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:34:32 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/09 10:24:42 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/09 11:14:52 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ static int	pressed_key(int keycode, t_mlx *mlx)
 {
 	double	left_right_angle;
 
+
 	left_right_angle = mlx->player->dir_angle + (PI / 2);
 	if (keycode == ESC)
 		close_and_free(mlx);
 	else if (keycode == UP || keycode == DOWN || keycode == LEFT \
 			|| keycode == RIGHT)
 			mov_player(mlx->player, keycode, left_right_angle);
+	if (keycode == )
 	clear_screen(mlx->img);
 	draw_player2d(mlx, mlx->player);
 	draw_map2d(mlx->map, mlx->img, mlx->player);

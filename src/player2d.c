@@ -6,11 +6,22 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:27:19 by user              #+#    #+#             */
-/*   Updated: 2025/05/09 10:24:58 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/09 10:58:37 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub.h"
+
+void	draw_player_dir(t_player *player, t_img *img)
+{
+	t_point	final_line_point;
+	int		line_size;
+
+	line_size = 20;
+	final_line_point.x = player->center.x + (cos(player->dir_angle) * line_size);
+	final_line_point.y = player->center.y - (sin(player->dir_angle) * line_size);
+	draw_line(player->center, final_line_point, img, 0xFF00FF);
+}
 
 void	mov_player(t_player *player, int keycode, double left_right_angle)
 {
@@ -72,6 +83,7 @@ void	draw_player2d(t_mlx *mlx, t_player *player)
 
 	size = PIXELS / 2;
 	draw_square(size, player->center.x, player->center.y, mlx->img);
+	draw_player_dir(player, mlx->img);
 }
 
 
