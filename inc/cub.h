@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:32:03 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/07 12:45:48 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/09 10:17:54 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 # define DOWN 65364
 # define LEFT 65361
 # define RIGHT 65363
+# define MOV_SPEED 5
+# define PI 3.14159265359
 
 typedef	struct	s_point
 {
@@ -43,6 +45,7 @@ typedef struct	s_player
 {
 	double		pos_x;
 	double		pos_y;
+	double		dir_angle;
 	t_point		center;
 	char		cardinal_point;
 }				t_player;
@@ -117,5 +120,6 @@ int			vertical_map(t_map *cub);
 void		caracter_valid(t_map *cub);
 void 		free_mat(char **mat);
 void		clear_screen(t_img *img);
+void		mov_player(t_player *player, int keycode, double left_right_angle);
 
 #endif

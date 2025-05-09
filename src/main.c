@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:34:32 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/07 12:59:01 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/09 10:24:42 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,14 @@ void		tmp_map(t_map *map, const char *filename);
 
 static int	pressed_key(int keycode, t_mlx *mlx)
 {
+	double	left_right_angle;
+
+	left_right_angle = mlx->player->dir_angle + (PI / 2);
 	if (keycode == ESC)
 		close_and_free(mlx);
-	else if (keycode == UP)
-	{
-		mlx->player->center.y -= 5;
-	}
-	else if (keycode == DOWN)
-	{
-		mlx->player->center.y += 5;
-	}
-	else if (keycode == LEFT)
-	{
-		mlx->player->center.x -= 5;
-	}
-	else if (keycode == RIGHT)
-	{
-		mlx->player->center.x += 5;
-	}
+	else if (keycode == UP || keycode == DOWN || keycode == LEFT \
+			|| keycode == RIGHT)
+			mov_player(mlx->player, keycode, left_right_angle);
 	clear_screen(mlx->img);
 	draw_player2d(mlx, mlx->player);
 	draw_map2d(mlx->map, mlx->img, mlx->player);

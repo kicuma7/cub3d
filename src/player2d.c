@@ -6,11 +6,35 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:27:19 by user              #+#    #+#             */
-/*   Updated: 2025/05/07 11:23:38 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/09 10:24:58 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub.h"
+
+void	mov_player(t_player *player, int keycode, double left_right_angle)
+{
+	if (keycode == UP)
+	{
+		player->center.x += MOV_SPEED * cos(player->dir_angle);
+		player->center.y -= MOV_SPEED * sin(player->dir_angle);
+	}
+	else if (keycode == DOWN)
+	{
+		player->center.x -= MOV_SPEED * cos(player->dir_angle);
+		player->center.y += MOV_SPEED * sin(player->dir_angle);
+	}
+	else if (keycode == LEFT)
+	{
+		player->center.x += MOV_SPEED * cos(left_right_angle);
+		player->center.y -= MOV_SPEED * sin(left_right_angle);
+	}
+	else if (keycode == RIGHT)
+	{
+		player->center.x -= MOV_SPEED * cos(left_right_angle);
+		player->center.y += MOV_SPEED * sin(left_right_angle);
+	}
+}
 
 t_player	*init_player(t_player *player)
 {
