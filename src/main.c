@@ -6,13 +6,31 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:34:32 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/09 11:39:18 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/13 10:35:44 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub.h"
 
 void		tmp_map(t_map *map, const char *filename);
+
+static void	draw_fov(t_player *player, t_img *img, int screen_resolution)
+{
+	double	begin_angle;
+	double	end_angle;
+	double	iterator;
+
+	begin_angle = player->dir_angle - (PI / 6);
+	end_angle = player->dir_angle + (PI / 6);
+	iterator = (end_angle - begin_angle) / screen_resolution;
+	int	i = 0;
+	while (begin_angle < end_angle)
+	{
+		draw_line_acording_angle(player, img, begin_angle, 200);
+		begin_angle += iterator;
+		i++;
+	}
+}
 
 static int	pressed_key(int keycode, t_mlx *mlx)
 {
@@ -31,6 +49,7 @@ static int	pressed_key(int keycode, t_mlx *mlx)
 		mlx->player->dir_angle -= PI / 32;
 	clear_screen(mlx->img);
 	draw_player2d(mlx, mlx->player);
+	draw_fov(mlx->player, mlx->img, 1920);
 	draw_map2d(mlx->map, mlx->img, mlx->player);
 	mlx_put_image_to_window(mlx->con, mlx->win, mlx->img->img, 0, 0);
 	return (0);

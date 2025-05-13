@@ -6,11 +6,20 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 12:21:02 by user              #+#    #+#             */
-/*   Updated: 2025/05/07 12:46:14 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/13 10:02:12 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub.h"
+
+void	draw_line_acording_angle(t_player *player, t_img *img, double angle, int line_size)
+{
+	t_point	final_line_point;
+
+	final_line_point.x = player->center.x + (cos(angle) * line_size);
+	final_line_point.y = player->center.y - (sin(angle) * line_size);
+	draw_line(player->center, final_line_point, img, 0xFF0000);
+}
 
 void	clear_screen(t_img *img)
 {

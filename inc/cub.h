@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:32:03 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/09 11:01:13 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/13 09:57:44 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,6 @@ void 		free_mat(char **mat);
 void		clear_screen(t_img *img);
 void		mov_player(t_player *player, int keycode, double left_right_angle);
 void		draw_player_dir(t_player *player, t_img *img);
+void		draw_line_acording_angle(t_player *player, t_img *img, double angle, int line_size);
 
 #endif
