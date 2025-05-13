@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:32:03 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/13 09:57:44 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/13 12:14:31 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # ifndef MAX_TEXTURE_PATH
 #  define MAX_TEXTURE_PATH 256
 # endif
-# define PIXELS 30
+# define PIXELS 20
 # define ESC 65307
 # define UP 65362
 # define DOWN 65364
