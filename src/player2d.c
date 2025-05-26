@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:27:19 by user              #+#    #+#             */
-/*   Updated: 2025/05/26 10:56:20 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/26 12:02:57 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	draw_player_dir(t_player *player, t_img *img)
 	draw_line(player->center, final_line_point, img, 0xFF00FF);
 }
 
-void	mov_player(t_player *player, int keycode, double left_right_angle)
+void	mov_player(t_player *player, int keycode)
 {
 	if (keycode == UP)
 	{
@@ -37,13 +37,13 @@ void	mov_player(t_player *player, int keycode, double left_right_angle)
 	}
 	else if (keycode == LEFT)
 	{
-		player->center.x += MOV_SPEED * cos(left_right_angle);
-		player->center.y -= MOV_SPEED * sin(left_right_angle);
+		player->center.x += MOV_SPEED * cos(player->dir_angle + (PI / 2));
+		player->center.y -= MOV_SPEED * sin(player->dir_angle + (PI / 2));
 	}
 	else if (keycode == RIGHT)
 	{
-		player->center.x -= MOV_SPEED * cos(left_right_angle);
-		player->center.y += MOV_SPEED * sin(left_right_angle);
+		player->center.x -= MOV_SPEED * cos(player->dir_angle + (PI / 2));
+		player->center.y += MOV_SPEED * sin(player->dir_angle + (PI / 2));
 	}
 }
 

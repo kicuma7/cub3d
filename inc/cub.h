@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:32:03 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/26 10:54:09 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/26 16:16:59 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define PI 3.14159265359
 # define ROT_LEFT 97
 # define ROT_RIGHT 100
+# define FOV 1.1650 //66 graus em Radiano
+# define ONE_RAD 0.0305 //1 Grau em Radianos
 
 typedef	struct	s_point
 {
@@ -122,7 +124,7 @@ int			vertical_map(t_map *cub);
 void		caracter_valid(t_map *cub);
 void 		free_mat(char **mat);
 void		clear_screen(t_img *img);
-void		mov_player(t_player *player, int keycode, double left_right_angle);
+void		mov_player(t_player *player, int keycode);
 void		draw_player_dir(t_player *player, t_img *img);
 void		draw_line_acording_angle(t_player *player, t_img *img, double angle, int line_size);
 
