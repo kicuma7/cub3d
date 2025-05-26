@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:27:19 by user              #+#    #+#             */
-/*   Updated: 2025/05/09 10:58:37 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/26 10:56:20 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void	draw_square(int player_size, double center_x, double center_y, \
 		}
 		i++;
 	}
-}	
+}
 
 void	draw_player2d(t_mlx *mlx, t_player *player)
 {

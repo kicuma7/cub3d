@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:34:32 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/13 10:35:44 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/26 10:56:30 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void		tmp_map(t_map *map, const char *filename);
 
+/*
 static void	draw_fov(t_player *player, t_img *img, int screen_resolution)
 {
 	double	begin_angle;
@@ -31,6 +32,7 @@ static void	draw_fov(t_player *player, t_img *img, int screen_resolution)
 		i++;
 	}
 }
+*/
 
 static int	pressed_key(int keycode, t_mlx *mlx)
 {
@@ -49,7 +51,7 @@ static int	pressed_key(int keycode, t_mlx *mlx)
 		mlx->player->dir_angle -= PI / 32;
 	clear_screen(mlx->img);
 	draw_player2d(mlx, mlx->player);
-	draw_fov(mlx->player, mlx->img, 1920);
+	//draw_fov(mlx->player, mlx->img, 1920);
 	draw_map2d(mlx->map, mlx->img, mlx->player);
 	mlx_put_image_to_window(mlx->con, mlx->win, mlx->img->img, 0, 0);
 	return (0);
