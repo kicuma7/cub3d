@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:34:32 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/26 16:29:35 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/27 09:49:20 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,35 +25,32 @@ static t_point	draw_each_fov_line(t_point main_line, double angle, t_map *map)
 		final_line.y -= 1 * sin(angle);
 		x = (int)(final_line.x / PIXELS);
 		y = (int)(final_line.y / PIXELS);
-		printf("\nX: %d, Y: %d\n", x, y);
 		if (x == map->wid || y == map->hei || map->map[y][x] == '1'\
 			|| x <= 0 || y <= 0)
 			break ;
 	}
-	printf("WID: %d\nHEI: %d\n", map->wid, map->hei);
 	return (final_line);
 }
 
-static void	draw_fov(t_mlx *mlx, double init_angle)
+void	draw_fov(t_mlx *mlx, double init_angle)
 {
 	t_point	final_line;
 	double	final_angle;
+	double	increment;
 
 	final_angle = init_angle + FOV;
+	increment = FOV / SCREEN_WID;
 	while (init_angle < final_angle)
 	{
 		final_line = draw_each_fov_line(mlx->player->center, \
 					init_angle, mlx->map);
 		draw_line(mlx->player->center, final_line, mlx->img, 0xFF0000);
-		init_angle += ONE_RAD;
+		init_angle += increment;
 	}
 }
 
 static int	pressed_key(int keycode, t_mlx *mlx)
 {
-	//t_point	line;
-	//t_point	final_line;
-
 	if (keycode == ESC)
 		close_and_free(mlx);
 	else if (keycode == UP || keycode == DOWN || keycode == LEFT \
@@ -63,7 +60,6 @@ static int	pressed_key(int keycode, t_mlx *mlx)
 		mlx->player->dir_angle += PI / 32;
 	else if (keycode == ROT_RIGHT)
 		mlx->player->dir_angle -= PI / 32;
-	//line = mlx->player->center;
 	clear_screen(mlx->img);
 	draw_fov(mlx, mlx->player->dir_angle - (FOV / 2));
 	draw_player2d(mlx, mlx->player);

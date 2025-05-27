@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 13:27:19 by user              #+#    #+#             */
-/*   Updated: 2025/05/26 12:02:57 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/27 09:49:05 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	draw_player2d(t_mlx *mlx, t_player *player)
 	size = PIXELS / 2;
 	draw_square(size, player->center.x, player->center.y, mlx->img);
 	draw_player_dir(player, mlx->img);
+	draw_fov(mlx, player->dir_angle - (FOV / 2));
 }
 
 

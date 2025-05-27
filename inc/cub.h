@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:32:03 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/26 16:16:59 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/27 09:49:48 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@
 # define ESC 65307
 # define UP 65362
 # define DOWN 65364
-# define LEFT 65361
-# define RIGHT 65363
+# define LEFT 97
+# define RIGHT 100
 # define MOV_SPEED 5
 # define PI 3.14159265359
-# define ROT_LEFT 97
-# define ROT_RIGHT 100
+# define ROT_LEFT 65361
+# define ROT_RIGHT 65363
 # define FOV 1.1650 //66 graus em Radiano
-# define ONE_RAD 0.0305 //1 Grau em Radianos
+# define SCREEN_WID 600
 
 typedef	struct	s_point
 {
@@ -127,5 +127,6 @@ void		clear_screen(t_img *img);
 void		mov_player(t_player *player, int keycode);
 void		draw_player_dir(t_player *player, t_img *img);
 void		draw_line_acording_angle(t_player *player, t_img *img, double angle, int line_size);
+void		draw_fov(t_mlx *mlx, double init_angle);
 
 #endif
