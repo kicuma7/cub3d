@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:34:32 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/27 09:49:20 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/29 09:57:53 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,15 @@ static t_point	draw_each_fov_line(t_point main_line, double angle, t_map *map)
 
 void	draw_fov(t_mlx *mlx, double init_angle)
 {
+	//t_point	plane_pos;
+	//t_point	plane_neg;
 	t_point	final_line;
 	double	final_angle;
 	double	increment;
 
 	final_angle = init_angle + FOV;
 	increment = FOV / SCREEN_WID;
+	//plane_pos.x = mlx->player->center.x;
 	while (init_angle < final_angle)
 	{
 		final_line = draw_each_fov_line(mlx->player->center, \
@@ -63,6 +66,7 @@ static int	pressed_key(int keycode, t_mlx *mlx)
 	clear_screen(mlx->img);
 	draw_fov(mlx, mlx->player->dir_angle - (FOV / 2));
 	draw_player2d(mlx, mlx->player);
+	draw_camera_vision_line(mlx->player, mlx->img);
 	draw_map2d(mlx->map, mlx->img, mlx->player);
 	mlx_put_image_to_window(mlx->con, mlx->win, mlx->img->img, 0, 0);
 	return (0);

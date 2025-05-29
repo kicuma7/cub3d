@@ -13,7 +13,8 @@ FILES = main \
 		free \
 		image \
 		draw_map2d \
-		player2d
+		player2d \
+		player_vision
 
 VALIDATION_SRC = $(wildcard $(VALIDATION_F)*.c)
 VALIDATION_OBJ = $(patsubst $(VALIDATION_F)%.c, $(OBJ_F)validation/%.o, $(VALIDATION_SRC))

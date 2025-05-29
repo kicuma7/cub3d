@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:32:03 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/05/27 09:49:48 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/05/29 09:55:18 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,6 @@ void		mov_player(t_player *player, int keycode);
 void		draw_player_dir(t_player *player, t_img *img);
 void		draw_line_acording_angle(t_player *player, t_img *img, double angle, int line_size);
 void		draw_fov(t_mlx *mlx, double init_angle);
+void		draw_camera_vision_line(t_player *player, t_img *img);
 
 #endif
