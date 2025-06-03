@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/01 12:04:27 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/03 21:39:09 by user             ###   ########.fr       */
+/*   Created: 2025/06/03 23:04:15 by user              #+#    #+#             */
+/*   Updated: 2025/06/04 00:24:24 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub.h"
+#include "../../inc/cub.h"
 
-static void	free_map(t_map *map)
+void	draw_map(t_map *map, t_img *img)
 {
-	size_t	i;
+	t_dimension	wall_dimension;
+	t_point		pos;
+	int			i;
+	int			j;
 
-	if (!map || !map->map)
-		return ;
+	wall_dimension.wid = PIXELS;
+	wall_dimension.hei = PIXELS;
 	i = 0;
 	while (map->map[i])
-		free(map->map[i++]);
-	free(map->map);
-	map->map = NULL;
-}
-
-int	close_and_free(t_mlx *mlx)
-{
-	/*
-	free_map(mlx->map);
-	mlx_destroy_window(mlx->con, mlx->win);
-	#ifdef __linux__
-		mlx_destroy_display(mlx->con);
-	#endif
-	free(mlx->con);
-	*/
-	(void)free_map;
-	(void)mlx;
-	exit(EXIT_SUCCESS);
-	return (0);
+	{
+		j = 0;
+		while (map->map[i][j])
+		{
+			if (map->map[i][j] == '1')
+			{
+				pos.x = j * PIXELS;
+				pos.y = i * PIXELS;
+				draw_square(img, wall_dimension, pos, 0x00ff00);
+			}
+			j++;
+		}
+		i++;
+	}
 }

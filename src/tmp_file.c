@@ -57,10 +57,5 @@ void	tmp_map(t_map *map, const char *filename)
 
 		line_count++;
 	}
-
 	fclose(file);
-	map->hei = line_count;
-	map->wid = max_width;
-	map->pixels_hei = map->hei * PIXELS;
-	map->pixels_wid = map->wid * PIXELS;
 }
