@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:34:32 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/04 01:10:05 by user             ###   ########.fr       */
+/*   Updated: 2025/06/04 22:49:14 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,18 @@
 
 static int	pressed_key(int keycode, t_mlx *mlx)
 {
-	printf("keycode: %d\n", keycode);
 	if (keycode == ESC)
 		close_and_free(mlx);
+	else if (keycode == UP || keycode == DOWN || keycode == LEFT || \
+			keycode == RIGHT)
+	{
+		mov_player_position(mlx->player, keycode);
+	}
+	else if (keycode == ROTATE_LEFT)
+		mlx->player->dir_angle -= PI / 32;
+	else if (keycode == ROTATE_RIGHT)
+		mlx->player->dir_angle += PI / 32;
+	update_frame(mlx);
 	return (0);
 }
 

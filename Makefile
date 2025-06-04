@@ -25,10 +25,12 @@ FILES = main \
         tmp_file \
         free \
 		init \
+		player \
 		aux_func/pixel_put \
 		aux_func/draw_square \
 		2dmap/map \
-		2dmap/player
+		2dmap/player \
+		2dmap/2d_window
 
 # Generate full paths for source and object files
 SRCS = $(addprefix $(SRC_F), $(addsuffix .c, $(FILES)))

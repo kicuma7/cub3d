@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   2d_window.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/03 23:04:15 by user              #+#    #+#             */
-/*   Updated: 2025/06/04 21:43:37 by user             ###   ########.fr       */
+/*   Created: 2025/06/04 21:44:11 by user              #+#    #+#             */
+/*   Updated: 2025/06/04 22:04:42 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub.h"
 
-void	draw_map(t_map *map, t_img *img)
+void	clear_all_window(t_img *img)
 {
-	t_dimension	wall_dimension;
-	t_point		pos;
-	int			i;
-	int			j;
+	t_point	position;
 
-	wall_dimension.wid = PIXELS;
-	wall_dimension.hei = PIXELS;
-	i = 0;
-	while (map->map[i])
+	position.x = 0;
+	while (position.x < SCREEN_WID)
 	{
-		j = 0;
-		while (map->map[i][j])
+		position.y = 0;
+		while (position.y < SCREEN_HEI)
 		{
-			if (map->map[i][j] == '1')
-			{
-				pos.x = j * PIXELS;
-				pos.y = i * PIXELS;
-				draw_square(img, wall_dimension, pos, 0x00ff00);
-			}
-			j++;
+			pixel_put(img, position, 0x000000);
+			position.y += 1;
 		}
-		i++;
+		position.x += 1;
 	}
+}
+
+void	update_frame(t_mlx *mlx)
+{
+	clear_all_window(mlx->img);
+	draw_map(mlx->map, mlx->img);
+	draw_player(mlx->player, mlx->img);
+	mlx_put_image_to_window(mlx->con, mlx->win, mlx->img->img, 0, 0);
 }

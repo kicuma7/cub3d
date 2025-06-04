@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 22:03:07 by user              #+#    #+#             */
-/*   Updated: 2025/06/04 01:00:18 by user             ###   ########.fr       */
+/*   Updated: 2025/06/04 21:00:46 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static void	set_player_dir_angle(t_player *player, char cardinal_point)
 	if (cardinal_point == 'N')
 		player->dir_angle = 0;
 	else if (cardinal_point == 'S')
-		player->dir_angle = 0;
+		player->dir_angle = PI;
 	else if (cardinal_point == 'E')
-		player->dir_angle = 0;
+		player->dir_angle = PI / 2;
 	else if (cardinal_point == 'W')
-		player->dir_angle = 0;
+		player->dir_angle = PI + (PI / 2);
 }
 
 static void	init_player(t_player *player, char **map)
