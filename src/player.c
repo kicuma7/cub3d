@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 21:02:33 by user              #+#    #+#             */
-/*   Updated: 2025/06/04 22:55:34 by user             ###   ########.fr       */
+/*   Updated: 2025/06/04 23:21:56 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,26 @@ void	mov_player_position(t_player *player, int keycode)
 	{
 		player->position.x += sin(left_right_angle) * MOV_VELOCITY;
 		player->position.y -= cos(left_right_angle) * MOV_VELOCITY;
+	}
+}
+
+void	rotate_player(t_player *player, int keycode)
+{
+	if (keycode == ROTATE_RIGHT)
+	{
+		if ((player->dir_angle + (PI / 32)) > (PI * 2))
+			player->dir_angle = (player->dir_angle + (PI / 32)) - (PI * 2);
+		else
+			player->dir_angle += PI / 32;
+	}
+	else if (keycode == ROTATE_LEFT)
+	{
+		if ((player->dir_angle - (PI / 32)) < 0)
+		{
+			player->dir_angle -= (PI / 32);
+			player->dir_angle += (PI * 2);
+		}
+		else
+			player->dir_angle -= PI / 32;
 	}
 }

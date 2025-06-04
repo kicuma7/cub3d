@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:32:03 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/04 22:04:57 by user             ###   ########.fr       */
+/*   Updated: 2025/06/04 23:07:10 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	init(t_mlx *mlx, t_map *map, t_img *img, t_player *player, char *filename);
 void	pixel_put(t_img *img, t_point position, int color);
 void	draw_square(t_img *img, t_dimension dimension, t_point pos, int color);
 void	mov_player_position(t_player *player, int keycode);
+void	rotate_player(t_player *player, int keycode);
 
 //MINIMAPA 2D
 void	draw_map(t_map *map, t_img *img);
