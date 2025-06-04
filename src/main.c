@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:34:32 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/04 00:21:06 by user             ###   ########.fr       */
+/*   Updated: 2025/06/04 01:10:05 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@ static int	pressed_key(int keycode, t_mlx *mlx)
 
 int	main(int ac, char **av)
 {
-	t_mlx	mlx;
-	t_map	map;
-	t_img	img;
+	t_mlx		mlx;
+	t_map		map;
+	t_img		img;
+	t_player	player;
 
 	if (ac <= 1)
 		return (0);
 	mlx.con = mlx_init();
-	init(&mlx, &map, &img, av[1]);
+	init(&mlx, &map, &img, &player, av[1]);
 	t_dimension dim;
 	t_point		pos;
 	dim.wid = 20;
@@ -37,6 +38,7 @@ int	main(int ac, char **av)
 	pos.x = 0;
 	pos.y = 0;
 	draw_map(&map, &img);
+	draw_player(&player, &img);
 	mlx_put_image_to_window(mlx.con, mlx.win, img.img, 0, 0);
 	mlx_hook(mlx.win, ON_DESTROY, 0, &close_and_free, &mlx);
 	mlx_hook(mlx.win, ON_KEYDOWN, 1L<<0, &pressed_key, &mlx);

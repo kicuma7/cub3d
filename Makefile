@@ -27,7 +27,8 @@ FILES = main \
 		init \
 		aux_func/pixel_put \
 		aux_func/draw_square \
-		2dmap/map
+		2dmap/map \
+		2dmap/player
 
 # Generate full paths for source and object files
 SRCS = $(addprefix $(SRC_F), $(addsuffix .c, $(FILES)))
