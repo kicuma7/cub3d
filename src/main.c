@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:34:32 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/04 23:06:44 by user             ###   ########.fr       */
+/*   Updated: 2025/06/16 17:28:34 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	pressed_key(int keycode, t_mlx *mlx)
 {
+	printf("%d\n", keycode);
 	if (keycode == ESC)
 		close_and_free(mlx);
 	else if (keycode == UP || keycode == DOWN || keycode == LEFT || \

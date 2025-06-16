@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:32:03 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/04 23:07:10 by user             ###   ########.fr       */
+/*   Updated: 2025/06/16 13:24:24 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	pixel_put(t_img *img, t_point position, int color);
 void	draw_square(t_img *img, t_dimension dimension, t_point pos, int color);
 void	mov_player_position(t_player *player, int keycode);
 void	rotate_player(t_player *player, int keycode);
+void	draw_line(t_point point_ini, t_point point_fin, t_img *img);
 
 //MINIMAPA 2D
 void	draw_map(t_map *map, t_img *img);
