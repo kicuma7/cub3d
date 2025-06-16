@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 10:34:32 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/16 17:28:34 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/16 19:50:57 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	pressed_key(int keycode, t_mlx *mlx)
 {
-	printf("%d\n", keycode);
 	if (keycode == ESC)
 		close_and_free(mlx);
 	else if (keycode == UP || keycode == DOWN || keycode == LEFT || \
@@ -39,6 +38,7 @@ int	main(int ac, char **av)
 		return (0);
 	mlx.con = mlx_init();
 	init(&mlx, &map, &img, &player, av[1]);
+	//printf("%c\n", map.map[0][0]);
 	t_dimension dim;
 	t_point		pos;
 	dim.wid = 20;
@@ -46,7 +46,7 @@ int	main(int ac, char **av)
 	pos.x = 0;
 	pos.y = 0;
 	draw_map(&map, &img);
-	draw_player(&player, &img);
+	draw_player(&player, &img, map.map);
 	mlx_put_image_to_window(mlx.con, mlx.win, img.img, 0, 0);
 	mlx_hook(mlx.win, ON_DESTROY, 0, &close_and_free, &mlx);
 	mlx_hook(mlx.win, ON_KEYDOWN, 1L<<0, &pressed_key, &mlx);

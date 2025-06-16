@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 21:44:11 by user              #+#    #+#             */
-/*   Updated: 2025/06/16 18:45:21 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/16 19:22:48 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ void	update_frame(t_mlx *mlx)
 {
 	clear_all_window(mlx->img);
 	draw_map(mlx->map, mlx->img);
-	draw_player(mlx->player, mlx->img);
+	draw_player(mlx->player, mlx->img, mlx->map->map);
 	mlx_put_image_to_window(mlx->con, mlx->win, mlx->img->img, 0, 0);
 }
