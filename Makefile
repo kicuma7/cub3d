@@ -7,7 +7,14 @@ NAME = cub3d
 SRC_F = ./source/
 OBJ_F = ./.objs/
 
+DIR_LIST = $(OBJ_F) \
+			$(OBJ_F)aux_func \
+			$(OBJ_F)minimap
+
 FILE_NAME =	cub \
+			aux_func/pixel_put \
+			aux_func/draw_square \
+			minimap/map \
 
 SRCS = $(addprefix $(SRC_F), $(addsuffix .c, $(FILE_NAME)))
 OBJS = $(addprefix $(OBJ_F), $(addsuffix .o, $(FILE_NAME)))
@@ -18,7 +25,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $^ $(LIBFLAGS) -o $(NAME)
 
 $(OBJ_F)%.o : $(SRC_F)%.c
-	@mkdir -p $(OBJ_F)
+	@mkdir -p $(DIR_LIST)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)

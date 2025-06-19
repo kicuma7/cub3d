@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pre_process.h                                      :+:      :+:    :+:   */
+/*   pixel_put.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/19 12:23:15 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/19 13:07:01 by jquicuma         ###   ########.fr       */
+/*   Created: 2025/06/19 14:11:54 by jquicuma          #+#    #+#             */
+/*   Updated: 2025/06/19 18:42:37 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRE_PROC
-# define PRE_PROC
+#include "../../includes/cub.h"
 
-# define SCREEN_WID 640
-# define SCREEN_HEI 400
-# define TILE 20
+void	pixel_put(t_img *img, t_point position, int color)
+{
+	int	pos;
+	int	x;
+	int	y;
 
-#endif
+	x = (int)position.x;
+	y = (int)position.y;
+	pos = x + (y * (img->size_line / 4));
+	img->img_addr[pos] = color;
+}
