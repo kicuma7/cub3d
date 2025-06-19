@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:05:45 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/19 18:57:10 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/19 18:59:00 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,12 @@ void	draw_map(char **map, t_img *img)
 		x = 0;
 		while (map[y][x])
 		{
+			pos.x = (x * TILE) + 1;
+			pos.y = (y * TILE) + 1;
 			if (map[y][x] == '1')
-			{
-				pos.x = (x * TILE) + 1;
-				pos.y = (y * TILE) + 1;
 				draw_square(img, TILE - 1, pos, 0x3a6332);
-			}
 			else
-			{
-				pos.x = (x * TILE) + 1;
-				pos.y = (y * TILE) + 1;
 				draw_square(img, TILE - 1, pos, 0x3c3c3c);
-			}
 			x++;
 		}
 		y++;
