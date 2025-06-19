@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 11:55:39 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/19 18:47:08 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/19 19:56:12 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ int	init(t_map *map, t_cub *cub)
 	cub->img2d->img = mlx_new_image(cub->con, map->wid * TILE, map->hei * TILE);
 	cub->img2d->img_addr = (int *)mlx_get_data_addr(cub->img2d->img, &(int){0}, \
 							&cub->img2d->size_line, &(int){0});
-	draw_map(map->map, cub->img2d);
+	cub->player = malloc(sizeof(t_player));
+	init_player(cub->player, map->map);
+	draw_2d_game(cub);
 	mlx_put_image_to_window(cub->con, cub->win2d, cub->img2d->img, 0, 0);
 	return (1);
 }

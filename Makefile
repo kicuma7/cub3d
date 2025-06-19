@@ -12,9 +12,10 @@ DIR_LIST = $(OBJ_F) \
 			$(OBJ_F)minimap
 
 FILE_NAME =	cub \
+			player \
 			aux_func/pixel_put \
 			aux_func/draw_square \
-			minimap/map \
+			minimap/minimap \
 
 SRCS = $(addprefix $(SRC_F), $(addsuffix .c, $(FILE_NAME)))
 OBJS = $(addprefix $(OBJ_F), $(addsuffix .o, $(FILE_NAME)))

@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 11:55:53 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/19 18:25:57 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/19 19:55:57 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ typedef struct	s_point
 	float		y;
 }				t_point;
 
+typedef struct	s_player
+{
+	t_point	position;
+	float	dir_angle;
+}				t_player;
+
 typedef struct		s_img
 {
 	void			*img;
@@ -41,19 +47,21 @@ typedef	struct		s_map
 
 typedef struct	s_cub
 {
-	void	*con;
-	void	*win2d;
-	void	*win3d;
-	t_img	*img2d;
-	t_img	*img3d;
-	t_map	*map;
+	void		*con;
+	void		*win2d;
+	void		*win3d;
+	t_img		*img2d;
+	t_img		*img3d;
+	t_map		*map;
+	t_player	*player;
 }				t_cub;
 
 void	pixel_put(t_img *img, t_point position, int color);
 void	draw_square(t_img *img, int size, t_point pos, int color);
+void	init_player(t_player *player, char **map);
 
 /*############ 2D MAP FUNCTIONS #######################*/
+void	draw_2d_game(t_cub *cub);
 
-void	draw_map(char **map, t_img *img);
 
 #endif
