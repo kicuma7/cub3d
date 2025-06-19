@@ -1,92 +1,24 @@
-# Makefile for cub3d on Linux
-
-# Commands
-RM = rm -rf
-NAME = cub3d
 CC = cc
-
-# Compiler flags
 CFLAGS = -Wall -Wextra -Werror -g3
+LIBFLAGS = -lm -L./library/libft/ -lft -L./library/mlx/ -lmlx -Imlx -lXext -lX11 -lz
 
-# Library flags
-# -lft: Link with libft
-# -L./libs/libft: Path to libft
-# -lmlx: Link with MiniLibX
-# -L./libs/mlx_linux: Path to MiniLibX
-# Linux-specific libs: -lX11 -lXext -lXpm -lGL -lm
-LIBS_FLAGS = -lft -L./libs/libft -lmlx -L./libs/mlx_linux -lX11 -lXext -lGL -lm
+NAME = cub3d
 
-# Source and object file directories
-SRC_F = ./src/
-OBJ_F = ./.obj/
+SRC_F = ./source/
+OBJ_F = ./.objs/
 
-# Source files (add more if needed)
-FILES = main \
-        tmp_file \
-        free \
-        init \
-        player \
-        aux_func/pixel_put \
-        aux_func/draw_square \
-		aux_func/draw_line \
-        2dmap/map \
-        2dmap/player \
-        2dmap/2d_window
+FILE_NAME =	cub \
 
-# Generate full paths for source and object files
-SRCS = $(addprefix $(SRC_F), $(addsuffix .c, $(FILES)))
-OBJS = $(addprefix $(OBJ_F), $(addsuffix .o, $(FILES)))
+SRCS = $(addprefix $(SRC_F), $(addsuffix .c, $(FILE_NAME)))
+OBJS = $(addprefix $(OBJ_F), $(addsuffix .o, $(FILE_NAME)))
 
-# Default target: builds the cub3d executable
-all: $(NAME)
-
-# Rule to build the cub3d executable
 $(NAME): $(OBJS)
-	@echo "--- Building MiniLibX ---"
-	$(MAKE) -C libs/mlx_linux
-	@echo "--- Building Libft ---"
-	$(MAKE) -C libs/libft
-	@echo "--- Linking cub3d ---"
-	$(CC) $(CFLAGS) $(OBJS) $(LIBS_FLAGS) -o $(NAME)
-	@echo "--- cub3d built successfully! ---"
+	make -C ./library/libft/
+	make -C ./library/mlx
+	$(CC) $(CFLAGS) $^ $(LIBFLAGS) -o $(NAME)
 
-# Rule to compile source files into object files
-$(OBJ_F)%.o: $(SRC_F)%.c
+$(OBJ_F)%.o : $(SRC_F)%.c
 	@mkdir -p $(OBJ_F)
-	@mkdir -p $(OBJ_F)aux_func
-	@mkdir -p $(OBJ_F)2dmap
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Cleans up object files and library builds
-clean:
-	@echo "--- Cleaning MiniLibX ---"
-	$(MAKE) clean -C libs/mlx_linux
-	@echo "--- Cleaning Libft ---"
-	$(MAKE) clean -C libs/libft
-	@echo "--- Cleaning object files ---"
-	$(RM) $(OBJS)
-	@echo "--- Clean complete ---"
-
-# Full clean: removes executable and all build artifacts
-fclean: clean
-	@echo "--- Full clean: removing cub3d executable ---"
-	$(MAKE) fclean -C libs/libft
-	$(RM) $(NAME)
-	@echo "--- Full clean complete ---"
-
-# Rebuilds everything
-re: fclean all
-
-# Rebuilds MiniLibX only
-mlx_re:
-	@echo "--- Rebuilding MiniLibX ---"
-	$(MAKE) re -C libs/mlx_linux
-	@echo "--- MiniLibX rebuild complete ---"
-
-# Runs the program (Valgrind works on Linux)
-run: all
-	@echo "--- Running with Valgrind (memory check) ---"
-	valgrind --leak-check=full --show-leak-kinds=all ./cub3d assets/maps/map.cub
-
-# Phony targets
-.PHONY: all clean fclean re mlx_re run
+all: $(NAME)
