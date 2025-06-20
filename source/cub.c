@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 11:55:39 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/20 09:56:14 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/20 10:17:14 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int ac, char **av)
 	t_cub	cub;
 
 	cub.map = malloc(sizeof(t_map));
+	cub.map->map = NULL;
 	if (ac <= 1)
 		return (0);
 	tmp_validate(cub.map, av[1]);
@@ -86,6 +87,22 @@ void	tmp_validate(t_map *map, const char *filename)
 		if (len > max_width)
 			max_width = len;
 		line_count++;
+	}
+		if (line_count < lines_alloc)
+	{
+		map->map[line_count] = NULL;
+    }
+	else
+	{
+		// Se a alocação atual é exatamente a quantidade de linhas,
+		// precisamos de mais espaço para o NULL terminator.
+		map->map = realloc(map->map, sizeof(char *) * (line_count + 1));
+		if (!map->map)
+		{
+			perror("realloc for NULL terminator");
+			exit(EXIT_FAILURE);
+		}
+		map->map[line_count] = NULL;
 	}
 	map->hei = line_count;
 	map->wid = max_width;
