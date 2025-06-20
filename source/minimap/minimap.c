@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:05:45 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/19 20:04:09 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/20 08:50:56 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static void	draw_map(char **map, t_img *img)
 
 static void	draw_player(t_player *player, t_img *img)
 {
+	printf("X: %f, Y: %f\n", player->position.x / TILE, player->position.y / TILE);
 	draw_square(img, TILE / 4, player->position, 0x000099);
 }
 

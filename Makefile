@@ -13,6 +13,8 @@ DIR_LIST = $(OBJ_F) \
 
 FILE_NAME =	cub \
 			player \
+			init \
+			free \
 			aux_func/pixel_put \
 			aux_func/draw_square \
 			minimap/minimap \
@@ -30,3 +32,11 @@ $(OBJ_F)%.o : $(SRC_F)%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
+
+clean :
+	rm -rf $(OBJS)
+
+fclean: clean
+	rm -rf $(NAME)
+
+.PHONY: all clean fclean

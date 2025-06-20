@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 11:55:53 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/19 19:55:57 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/20 09:24:59 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ typedef struct	s_cub
 void	pixel_put(t_img *img, t_point position, int color);
 void	draw_square(t_img *img, int size, t_point pos, int color);
 void	init_player(t_player *player, char **map);
+int		init(t_map *map, t_cub *cub);
+int		close_and_free(t_cub *cub);
 
 /*############ 2D MAP FUNCTIONS #######################*/
 void	draw_2d_game(t_cub *cub);
