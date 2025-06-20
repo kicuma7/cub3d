@@ -6,12 +6,23 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 11:55:39 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/20 10:17:14 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/20 14:48:40 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 void	tmp_validate(t_map *map, const char *filename);
+
+int	key_press(int keycode, t_cub *cub)
+{
+	if (keycode == ESC)
+		close_and_free(cub);
+	else if (keycode == UP || keycode == DOWN || keycode == LEFT || \
+			keycode == RIGHT || keycode == ROTATE_L || keycode == ROTATE_R)
+			move_player(cub->player, keycode);
+	draw_2d_game(cub);
+	return (0);
+}
 
 int	main(int ac, char **av)
 {
@@ -24,6 +35,7 @@ int	main(int ac, char **av)
 	tmp_validate(cub.map, av[1]);
 	init(cub.map, &cub);
 	mlx_hook(cub.win2d, 17, 0, &close_and_free, &cub);
+	mlx_hook(cub.win2d, ON_KEYPRESS, 1L<<0, &key_press, &cub);
 	mlx_loop(cub.con);
 }
 

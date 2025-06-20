@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 09:16:12 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/20 10:47:58 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/20 14:38:45 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,5 @@ int	init(t_map *map, t_cub *cub)
 	cub->player = malloc(sizeof(t_player));
 	init_player(cub->player, map->map);
 	draw_2d_game(cub);
-	mlx_put_image_to_window(cub->con, cub->win2d, cub->img2d->img, 0, 0);
 	return (1);
 }

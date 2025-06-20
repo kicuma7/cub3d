@@ -6,11 +6,32 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 19:18:22 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/19 19:47:10 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/20 14:47:17 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+static void	rotate_player(t_player *player, int keycode)
+{
+	if (keycode == ROTATE_R)
+	{
+		if ((player->dir_angle + (PI / 32)) > (PI * 2))
+			player->dir_angle = (player->dir_angle + (PI / 32)) - (PI * 2);
+		else
+			player->dir_angle += PI / 32;
+	}
+	else if (keycode == ROTATE_L)
+	{
+		if ((player->dir_angle - (PI / 32)) < 0)
+		{
+			player->dir_angle -= (PI / 32);
+			player->dir_angle += (PI * 2);
+		}
+		else
+			player->dir_angle -= PI / 32;
+	}
+}
 
 static void	set_player_pos_and_direction(t_player *player, \
 				char cardinal_point, int x, int y)
@@ -44,4 +65,33 @@ void	init_player(t_player *player, char **map)
 		}
 		i++;
 	}
+}
+
+void	move_player(t_player *player, int keycode)
+{
+	float	left_right_angle;
+
+	left_right_angle = player->dir_angle + (PI / 2);
+	if (keycode == UP)
+	{
+		player->position.x += sin(player->dir_angle) * SPEED;
+		player->position.y -= cos(player->dir_angle) * SPEED;
+	}
+	else if (keycode == DOWN)
+	{
+		player->position.x -= sin(player->dir_angle) * SPEED;
+		player->position.y += cos(player->dir_angle) * SPEED;
+	}
+	else if (keycode == LEFT)
+	{
+		player->position.x -= sin(left_right_angle) * SPEED;
+		player->position.y += cos(left_right_angle) * SPEED;
+	}
+	else if (keycode == RIGHT)
+	{
+		player->position.x += sin(left_right_angle) * SPEED;
+		player->position.y -= cos(left_right_angle) * SPEED;
+	}
+	else if (keycode == ROTATE_L || keycode == ROTATE_R)
+		rotate_player(player, keycode);
 }

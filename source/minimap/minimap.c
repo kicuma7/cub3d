@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:05:45 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/20 08:50:56 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/20 14:38:10 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static void	draw_map(char **map, t_img *img)
 
 static void	draw_player(t_player *player, t_img *img)
 {
-	printf("X: %f, Y: %f\n", player->position.x / TILE, player->position.y / TILE);
 	draw_square(img, TILE / 4, player->position, 0x000099);
 }
 
@@ -65,4 +64,5 @@ void	draw_2d_game(t_cub *cub)
 	clear_all_image(cub->img2d, cub->map->wid * TILE, cub->map->hei * TILE);
 	draw_map(cub->map->map, cub->img2d);
 	draw_player(cub->player, cub->img2d);
+	mlx_put_image_to_window(cub->con, cub->win2d, cub->img2d->img, 0, 0);
 }
