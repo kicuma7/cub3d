@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 11:55:53 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/20 14:46:53 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/21 16:04:45 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	init_player(t_player *player, char **map);
 int		init(t_map *map, t_cub *cub);
 int		close_and_free(t_cub *cub);
 void	move_player(t_player *player, int keycode);
+void	draw_line(t_point point_ini, t_point point_fin, t_img *img, int color);
+void	ray_launcher(t_player *player, char **map, t_img *img);
 
 /*############ 2D MAP FUNCTIONS #######################*/
 void	draw_2d_game(t_cub *cub);

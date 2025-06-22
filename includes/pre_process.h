@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 12:23:15 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/20 11:27:51 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/21 14:58:56 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@
 # define ROTATE_R 65363
 # define LEFT 97
 # define RIGHT 100
+# define FOV (66 * (PI / 180))
 
 # define ON_KEYPRESS 02
+
+# define ABS(n) ((n >= 0) ? n : (n * (-1)))
 
 #endif

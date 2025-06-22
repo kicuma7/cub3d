@@ -15,7 +15,9 @@ FILE_NAME =	cub \
 			player \
 			init \
 			free \
+			ray \
 			aux_func/pixel_put \
+			aux_func/draw_line \
 			aux_func/draw_square \
 			minimap/minimap \
 
