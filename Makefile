@@ -16,6 +16,7 @@ FILE_NAME =	cub \
 			init \
 			free \
 			ray \
+			ray_aux \
 			aux_func/pixel_put \
 			aux_func/draw_line \
 			aux_func/draw_square \
