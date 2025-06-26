@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 15:20:39 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/26 18:49:30 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:56:02 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,22 +91,13 @@ t_hit_info	get_ray_colision(t_point player_pos, t_point ray_dir, char **map)
 	return (hit_info);
 }
 
-t_point ray_caster(t_point ray_initial_pos, t_point ray_dir, char **map, t_img *img)
-{
-	t_hit_info  hit_info;
-
-	hit_info = get_ray_colision(ray_initial_pos, ray_dir, map);
-	draw_line(ray_initial_pos, hit_info.point, img, 0xffe6e6);
-	return (hit_info.point);
-}
-
 void	ray_launcher(t_player *player, char **map, t_img *img)
 {
-	int		i;
-	t_point	ray_dir;
-	float	ray_angle;
-	float	increment;
-	t_point	angle_final_position;
+	int			i;
+	t_point		ray_dir;
+	float		ray_angle;
+	float		increment;
+	t_hit_info	hit_info;
 
 	ray_angle = player->dir_angle - (FOV / 2);
 	increment = FOV / SCREEN_WID;
@@ -115,8 +106,8 @@ void	ray_launcher(t_player *player, char **map, t_img *img)
 	{
 		ray_dir.x = cos(ray_angle + (270 * (PI / 180)));
 		ray_dir.y = sin(ray_angle + (270 * (PI / 180)));
-		angle_final_position = ray_caster(player->position, ray_dir, map, img);
-		draw_line(player->position, angle_final_position, img, 0xffe6e6);
+		hit_info = get_ray_colision(player->position, ray_dir, map);
+		draw_line(player->position, hit_info.point, img, 0xffe6e6);
 		ray_angle += increment;
 		i++;
 	}

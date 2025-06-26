@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:05:45 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/22 10:42:46 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/26 19:21:17 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,6 @@ static void	draw_direction(t_img *img, t_player *player)
 		i++;
 	}
 	draw_line(player->position, increment, img, 0x00ff00);
-}
-
-static void	clear_all_image(t_img *img, int wid, int hei)
-{
-	t_point	pos;
-
-	pos.x = 0;
-	while (((int)pos.x) < wid)
-	{
-		pos.y = 0;
-		while (((int)pos.y) < hei)
-		{
-			pixel_put(img, pos, 0x000000);
-			pos.y++;
-		}
-		pos.x++;
-	}
 }
 
 static void	draw_map(char **map, t_img *img)

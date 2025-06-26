@@ -17,9 +17,11 @@ FILE_NAME =	cub \
 			free \
 			ray \
 			ray_aux \
+			world3d \
 			aux_func/pixel_put \
 			aux_func/draw_line \
 			aux_func/draw_square \
+			aux_func/clear_all_image \
 			minimap/minimap \
 
 SRCS = $(addprefix $(SRC_F), $(addsuffix .c, $(FILE_NAME)))

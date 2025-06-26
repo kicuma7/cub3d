@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 11:55:53 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/26 18:50:37 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/26 19:26:12 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,9 @@ void	ray_launcher(t_player *player, char **map, t_img *img);
 float	normalize_angle(float angle);
 bool	is_facing_down(float angle);
 bool	is_facing_right(float angle);
+void	draw_floor_and_ceil(t_img *img);
+void	clear_all_image(t_img *img, int wid, int hei);
+void	draw_3d_game(t_cub *cub);
 
 /*############ 2D MAP FUNCTIONS #######################*/
 void	draw_2d_game(t_cub *cub);
