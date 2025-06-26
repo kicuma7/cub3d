@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 19:18:22 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/22 18:48:15 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/27 00:25:11 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,31 +67,76 @@ void	init_player(t_player *player, char **map)
 	}
 }
 
-void	move_player(t_player *player, int keycode)
+static void	move_up_down(t_player *player, int keycode, char **map, \
+						t_point_int map_pos)
 {
-	float	left_right_angle;
-
-	left_right_angle = player->dir_angle + (PI / 2);
 	if (keycode == UP)
 	{
 		player->position.x += sin(player->dir_angle) * SPEED;
 		player->position.y -= cos(player->dir_angle) * SPEED;
+		map_pos.x = (int)(player->position.x / TILE);
+		map_pos.y = (int)(player->position.y / TILE);
+		if (map[map_pos.y][map_pos.x] == '1')
+		{
+			player->position.x -= sin(player->dir_angle) * SPEED;
+			player->position.y += cos(player->dir_angle) * SPEED;
+		}
 	}
 	else if (keycode == DOWN)
 	{
 		player->position.x -= sin(player->dir_angle) * SPEED;
 		player->position.y += cos(player->dir_angle) * SPEED;
+		map_pos.x = (int)(player->position.x / TILE);
+		map_pos.y = (int)(player->position.y / TILE);
+		if (map[map_pos.y][map_pos.x] == '1')
+		{
+			player->position.x += sin(player->dir_angle) * SPEED;
+			player->position.y -= cos(player->dir_angle) * SPEED;
+		}
 	}
-	else if (keycode == LEFT)
+}
+
+static void	move_left_right(t_player *player, int keycode, char **map, \
+						t_point_int map_pos, float angle)
+{
+	if (keycode == LEFT)
 	{
-		player->position.x -= sin(left_right_angle) * SPEED;
-		player->position.y += cos(left_right_angle) * SPEED;
+		player->position.x -= sin(angle) * SPEED;
+		player->position.y += cos(angle) * SPEED;
+		map_pos.x = (int)(player->position.x / TILE);
+		map_pos.y = (int)(player->position.y / TILE);
+		if (map[map_pos.y][map_pos.x] == '1')
+		{
+			player->position.x += sin(angle) * SPEED;
+			player->position.y -= cos(angle) * SPEED;
+		}
 	}
 	else if (keycode == RIGHT)
 	{
-		player->position.x += sin(left_right_angle) * SPEED;
-		player->position.y -= cos(left_right_angle) * SPEED;
+		player->position.x += sin(angle) * SPEED;
+		player->position.y -= cos(angle) * SPEED;
+		map_pos.x = (int)(player->position.x / TILE);
+		map_pos.y = (int)(player->position.y / TILE);
+		if (map[map_pos.y][map_pos.x] == '1')
+		{
+			player->position.x -= sin(angle) * SPEED;
+			player->position.y += cos(angle) * SPEED;
+		}
 	}
+}
+
+void	move_player(t_player *player, int keycode, char **map)
+{
+	t_point_int	map_pos;
+	float		left_right_angle;
+
+	left_right_angle = player->dir_angle + (PI / 2);
+	map_pos.x = 0;
+	map_pos.y = 0;
+	if (keycode == UP || keycode == DOWN)
+		move_up_down(player, keycode, map, map_pos);
+	else if (keycode == LEFT || keycode == RIGHT)
+		move_left_right(player, keycode, map, map_pos, left_right_angle);
 	else if (keycode == ROTATE_L || keycode == ROTATE_R)
 		rotate_player(player, keycode);
 }

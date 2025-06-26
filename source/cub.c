@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 11:55:39 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/22 19:07:40 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/26 23:57:29 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	key_press(int keycode, t_cub *cub)
 		close_and_free(cub);
 	else if (keycode == UP || keycode == DOWN || keycode == LEFT || \
 			keycode == RIGHT || keycode == ROTATE_L || keycode == ROTATE_R)
-		move_player(cub->player, keycode);
+		move_player(cub->player, keycode, cub->map->map);
 	draw_2d_game(cub);
 	return (0);
 }

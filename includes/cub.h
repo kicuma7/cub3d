@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 11:55:53 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/26 22:08:27 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/26 23:56:49 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	draw_square(t_img *img, int size, t_point pos, int color);
 void	init_player(t_player *player, char **map);
 int		init(t_map *map, t_cub *cub);
 int		close_and_free(t_cub *cub);
-void	move_player(t_player *player, int keycode);
+void	move_player(t_player *player, int keycode, char **map);
 void	draw_line(t_point point_ini, t_point point_fin, t_img *img, int color);
 void	ray_launcher(t_player *player, char **map, t_img *img2d, t_img *img3d);
 float	normalize_angle(float angle);
