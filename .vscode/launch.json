@@ -28,7 +28,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/cub3d",
-			"args": ["/home/jquicuma/dev/mini3D/cub3d/simplemap"],
+			"args": ["/home/jquicuma/dev/cub3d/assets/map.cub"],
 			"stopAtEntry": true,
 			"cwd": "${fileDirname}",
 			"environment": [],

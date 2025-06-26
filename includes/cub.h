@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 11:55:53 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/22 19:57:46 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/26 18:50:37 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <math.h>
+
+typedef struct	s_point_int
+{
+	int			x;
+	int			y;
+}				t_point_int;
 
 typedef struct	s_point
 {
@@ -56,6 +62,15 @@ typedef struct	s_cub
 	t_map		*map;
 	t_player	*player;
 }				t_cub;
+
+typedef struct	s_hit_info
+{
+	double	perp_wall_dist;
+	int		side; // 0 Se for Vertical X 1 Se for Horizontal Y
+	int		hit;
+	t_point	point;
+	char	**map;
+}				t_hit_info;
 
 void	pixel_put(t_img *img, t_point position, int color);
 void	draw_square(t_img *img, int size, t_point pos, int color);
