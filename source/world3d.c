@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 19:00:06 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/26 20:07:43 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/26 23:49:25 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	draw_floor_and_ceil(t_img *img)
 		point.x = 0;
 		while (point.x < SCREEN_WID)
 		{
-			pixel_put(img, point, 0xF5F5DC);
+			pixel_put(img, point, 0x92A1CF);
 			point.x++;
 		}
 		point.y++;
@@ -32,10 +32,38 @@ void	draw_floor_and_ceil(t_img *img)
 		point.x = 0;
 		while (point.x < SCREEN_WID)
 		{
-			pixel_put(img, point, 0x92A1CF);
+			pixel_put(img, point, 0x44402A);
 			point.x++;
 		}
 		point.y++;
+	}
+}
+
+void	draw_wall(t_hit_info hit_info, int x_column, t_img *img)
+{
+	t_point	wall_point;
+	int		color;
+	int		lineHeight;
+	int		drawStart;
+	int		drawEnd;
+
+	lineHeight = (int)((SCREEN_HEI * 10)/ hit_info.perp_wall_dist);
+	drawStart = -lineHeight / 2 + SCREEN_HEI / 2;
+	if (drawStart < 0)
+		drawStart = 0;
+	drawEnd = lineHeight / 2 + SCREEN_HEI / 2;
+	if (drawEnd >= SCREEN_HEI)
+		drawEnd = SCREEN_HEI - 1;
+	if (hit_info.side == 1)
+		color = 0xD8AC00;
+	else
+		color = 0xFDEE2F;
+	wall_point.x = x_column;
+	wall_point.y = drawStart;
+	while (wall_point.y < drawEnd)
+	{
+		pixel_put(img, wall_point, color);
+		wall_point.y++;
 	}
 }
 

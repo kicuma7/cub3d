@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 15:20:39 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/26 18:56:02 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/26 23:14:52 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ t_hit_info	get_ray_colision(t_point player_pos, t_point ray_dir, char **map)
 	return (hit_info);
 }
 
-void	ray_launcher(t_player *player, char **map, t_img *img)
+void	ray_launcher(t_player *player, char **map, t_img *img2d, t_img *img3d)
 {
 	int			i;
 	t_point		ray_dir;
@@ -102,12 +102,14 @@ void	ray_launcher(t_player *player, char **map, t_img *img)
 	ray_angle = player->dir_angle - (FOV / 2);
 	increment = FOV / SCREEN_WID;
 	i = 0;
+	draw_floor_and_ceil(img3d);
 	while (i < SCREEN_WID)
 	{
 		ray_dir.x = cos(ray_angle + (270 * (PI / 180)));
 		ray_dir.y = sin(ray_angle + (270 * (PI / 180)));
 		hit_info = get_ray_colision(player->position, ray_dir, map);
-		draw_line(player->position, hit_info.point, img, 0xffe6e6);
+		draw_line(player->position, hit_info.point, img2d, 0xffe6e6);
+		draw_wall(hit_info, i, img3d);
 		ray_angle += increment;
 		i++;
 	}

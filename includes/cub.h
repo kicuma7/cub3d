@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 11:55:53 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/26 19:26:12 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/26 22:08:27 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,14 @@ int		init(t_map *map, t_cub *cub);
 int		close_and_free(t_cub *cub);
 void	move_player(t_player *player, int keycode);
 void	draw_line(t_point point_ini, t_point point_fin, t_img *img, int color);
-void	ray_launcher(t_player *player, char **map, t_img *img);
+void	ray_launcher(t_player *player, char **map, t_img *img2d, t_img *img3d);
 float	normalize_angle(float angle);
 bool	is_facing_down(float angle);
 bool	is_facing_right(float angle);
 void	draw_floor_and_ceil(t_img *img);
 void	clear_all_image(t_img *img, int wid, int hei);
 void	draw_3d_game(t_cub *cub);
+void	draw_wall(t_hit_info hit_info, int x_column, t_img *img);
 
 /*############ 2D MAP FUNCTIONS #######################*/
 void	draw_2d_game(t_cub *cub);

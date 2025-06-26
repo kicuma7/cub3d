@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:05:45 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/26 19:21:17 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/26 23:25:32 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	draw_direction(t_img *img, t_player *player)
 	player_direction.y = sin(player->dir_angle + (270 * (PI / 180)));
 	increment.x = player->position.x;
 	increment.y = player->position.y;
-	while (i < (TILE * 2))
+	while (i < (TILE / 8))
 	{
 		increment.x += player_direction.x;
 		increment.y += player_direction.y;
@@ -67,7 +67,9 @@ void	draw_2d_game(t_cub *cub)
 {
 	clear_all_image(cub->img2d, cub->map->wid * TILE, cub->map->hei * TILE);
 	draw_map(cub->map->map, cub->img2d);
+	clear_all_image(cub->img3d, SCREEN_WID, SCREEN_HEI);
 	draw_player(cub->player, cub->img2d);
-	ray_launcher(cub->player, cub->map->map, cub->img2d);
+	ray_launcher(cub->player, cub->map->map, cub->img2d, cub->img3d);
 	mlx_put_image_to_window(cub->con, cub->win2d, cub->img2d->img, 0, 0);
+	mlx_put_image_to_window(cub->con, cub->win3d, cub->img3d->img, 0, 0);
 }
