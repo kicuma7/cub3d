@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 09:21:53 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/26 20:10:06 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/29 13:36:23 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static void	destroy_mlx_elements(t_cub *cub)
 		mlx_destroy_window(cub->con, cub->win2d);
 	if (cub->win3d != NULL)
 		mlx_destroy_window(cub->con, cub->win3d);
-	mlx_destroy_display(cub->con);
+	/*Descomentar essa Linha quando for mecher no Linux HEADER COM USER*/
+	//mlx_destroy_display(cub->con);
 	free(cub->con);
 }
 

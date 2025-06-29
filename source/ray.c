@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 15:20:39 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/26 23:14:52 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/06/29 13:49:41 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,14 @@ t_hit_info	get_ray_colision(t_point player_pos, t_point ray_dir, char **map)
 	t_hit_info	hit_info;
 
 	hit_info.hit = 0;
-	delta_dist.x = (ray_dir.x == 0) ? 1e30 : fabs(1.0 / ray_dir.x);
-	delta_dist.y = (ray_dir.y == 0) ? 1e30 : fabs(1.0 / ray_dir.y);
+	if (ray_dir.x == 0)
+		delta_dist.x = 1e30;
+	else
+		delta_dist.x = fabs(1.0 / ray_dir.x);
+	if (ray_dir.y == 0)
+		delta_dist.y = 1e30;
+	else
+		delta_dist.y = fabs(1.0 / ray_dir.y);
 	map_point.x = (int)(player_pos.x / TILE);
 	map_point.y = (int)(player_pos.y / TILE);
 	step = set_side_dist(&side_dist, player_pos, map_point, delta_dist, ray_dir);
@@ -108,6 +114,7 @@ void	ray_launcher(t_player *player, char **map, t_img *img2d, t_img *img3d)
 		ray_dir.x = cos(ray_angle + (270 * (PI / 180)));
 		ray_dir.y = sin(ray_angle + (270 * (PI / 180)));
 		hit_info = get_ray_colision(player->position, ray_dir, map);
+		hit_info.perp_wall_dist = hit_info.perp_wall_dist * cos(player->dir_angle - ray_angle);
 		draw_line(player->position, hit_info.point, img2d, 0xffe6e6);
 		draw_wall(hit_info, i, img3d);
 		ray_angle += increment;
