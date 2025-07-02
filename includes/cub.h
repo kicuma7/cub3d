@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 11:55:53 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/26 23:56:49 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/07/02 12:31:38 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ typedef	struct		s_map
 typedef struct	s_cub
 {
 	void		*con;
-	void		*win2d;
 	void		*win3d;
 	t_img		*img2d;
 	t_img		*img3d;
@@ -66,7 +65,7 @@ typedef struct	s_cub
 typedef struct	s_hit_info
 {
 	double	perp_wall_dist;
-	int		side; // 0 Se for Vertical X 1 Se for Horizontal Y
+	int		side;
 	int		hit;
 	t_point	point;
 	char	**map;

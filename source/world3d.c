@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 19:00:06 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/26 23:49:25 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/07/02 12:13:13 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,24 @@ void	draw_wall(t_hit_info hit_info, int x_column, t_img *img)
 {
 	t_point	wall_point;
 	int		color;
-	int		lineHeight;
-	int		drawStart;
-	int		drawEnd;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
 
-	lineHeight = (int)((SCREEN_HEI * 10)/ hit_info.perp_wall_dist);
-	drawStart = -lineHeight / 2 + SCREEN_HEI / 2;
-	if (drawStart < 0)
-		drawStart = 0;
-	drawEnd = lineHeight / 2 + SCREEN_HEI / 2;
-	if (drawEnd >= SCREEN_HEI)
-		drawEnd = SCREEN_HEI - 1;
+	line_height = (int)((SCREEN_HEI * 8)/ hit_info.perp_wall_dist);
+	draw_start = -line_height / 2 + SCREEN_HEI / 2;
+	if (draw_start < 0)
+		draw_start = 0;
+	draw_end = line_height / 2 + SCREEN_HEI / 2;
+	if (draw_end >= SCREEN_HEI)
+		draw_end = SCREEN_HEI - 1;
 	if (hit_info.side == 1)
 		color = 0xD8AC00;
 	else
 		color = 0xFDEE2F;
 	wall_point.x = x_column;
-	wall_point.y = drawStart;
-	while (wall_point.y < drawEnd)
+	wall_point.y = draw_start;
+	while (wall_point.y < draw_end)
 	{
 		pixel_put(img, wall_point, color);
 		wall_point.y++;

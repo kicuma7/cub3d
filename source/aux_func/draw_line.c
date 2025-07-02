@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 11:59:06 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/21 12:02:15 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/07/02 12:11:15 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,3 @@ void	draw_line(t_point point_ini, t_point point_fin, t_img *img, int color)
 		i++;
 	}
 }
-
