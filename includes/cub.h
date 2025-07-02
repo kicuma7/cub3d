@@ -6,53 +6,75 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 11:55:53 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/07/02 12:31:38 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/07/02 12:55:44 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_H
 # define CUB_H
 
-# include "pre_process.h"
+# ifndef PRE_PROC
+#  define PRE_PROC
+
+#  define SPEED 1
+#  define SCREEN_WID 640
+#  define SCREEN_HEI 400
+#  define TILE 10
+#  define MINI_TILE 6
+#  define PI 3.14159265359
+
+#  define ESC 65307
+#  define UP 65362
+#  define DOWN 65364
+#  define ROTATE_L 65361
+#  define ROTATE_R 65363
+#  define LEFT 97
+#  define RIGHT 100
+#  define FOV 1.1519173061
+
+#  define ON_KEYPRESS 02
+
+# endif
+
 # include "../library/libft/inc/libft.h"
 # include "../library/mlx/mlx.h"
 # include <stdbool.h>
 # include <stdio.h>
 # include <math.h>
 
-typedef struct	s_point_int
+typedef struct s_point_int
 {
 	int			x;
 	int			y;
 }				t_point_int;
 
-typedef struct	s_point
+typedef struct s_point
 {
 	float		x;
 	float		y;
 }				t_point;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	t_point	position;
 	float	dir_angle;
 }				t_player;
 
-typedef struct		s_img
+typedef struct s_img
 {
 	void			*img;
 	int				size_line;
 	int				*img_addr;
 }					t_img;
 
-typedef	struct		s_map
+typedef struct s_map
 {
 	char			**map;
 	unsigned int	wid;
 	unsigned int	hei;
 }					t_map;
 
-typedef struct	s_cub
+typedef struct s_cub
 {
 	void		*con;
 	void		*win3d;
@@ -62,7 +84,7 @@ typedef struct	s_cub
 	t_player	*player;
 }				t_cub;
 
-typedef struct	s_hit_info
+typedef struct s_hit_info
 {
 	double	perp_wall_dist;
 	int		side;
@@ -89,6 +111,5 @@ void	draw_wall(t_hit_info hit_info, int x_column, t_img *img);
 
 /*############ 2D MAP FUNCTIONS #######################*/
 void	draw_2d_game(t_cub *cub);
-
 
 #endif
