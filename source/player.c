@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 19:18:22 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/07/02 12:26:39 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/07/02 12:57:47 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,12 @@ static void	set_player_pos_and_direction(t_player *player, \
 		player->dir_angle = 0;
 	else if (cardinal_point == 'S')
 		player->dir_angle = PI;
-	else if (cardinal_point =='E')
+	else if (cardinal_point == 'E')
 		player->dir_angle = 90 * (PI / 180);
 	else if (cardinal_point == 'W')
 		player->dir_angle = 270 * (PI / 180);
 }
+
 void	init_player(t_player *player, char **map)
 {
 	int	i;

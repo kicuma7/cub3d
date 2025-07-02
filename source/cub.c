@@ -6,13 +6,13 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 11:55:39 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/07/02 12:19:59 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/07/02 12:55:58 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
-void	tmp_validate(t_map *map, const char *filename);
 
+void	tmp_validate(t_map *map, const char *filename);
 
 int	key_press(int keycode, t_cub *cub)
 {
@@ -36,11 +36,9 @@ int	main(int ac, char **av)
 	tmp_validate(cub.map, av[1]);
 	init(cub.map, &cub);
 	mlx_hook(cub.win3d, 17, 0, &close_and_free, &cub);
-	mlx_hook(cub.win3d, ON_KEYPRESS, 1L<<0, &key_press, &cub);
+	mlx_hook(cub.win3d, ON_KEYPRESS, 1L << 0, &key_press, &cub);
 	mlx_loop(cub.con);
 }
-
-
 
 /* #################  REMOVE THIS BEFORE FINISH ALL ###################### */
 

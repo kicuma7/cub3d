@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 19:00:06 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/07/02 12:13:13 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/07/02 12:59:42 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	draw_wall(t_hit_info hit_info, int x_column, t_img *img)
 	int		draw_start;
 	int		draw_end;
 
-	line_height = (int)((SCREEN_HEI * 8)/ hit_info.perp_wall_dist);
+	line_height = (int)((SCREEN_HEI * 8) / hit_info.perp_wall_dist);
 	draw_start = -line_height / 2 + SCREEN_HEI / 2;
 	if (draw_start < 0)
 		draw_start = 0;

@@ -6,7 +6,7 @@
 /*   By: jquicuma <jquicuma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 11:59:06 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/07/02 12:11:15 by jquicuma         ###   ########.fr       */
+/*   Updated: 2025/07/02 12:49:31 by jquicuma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	draw_line(t_point point_ini, t_point point_fin, t_img *img, int color)
 
 	distance.x = point_fin.x - point_ini.x;
 	distance.y = point_fin.y - point_ini.y;
-	if ((ABS(distance.x)) > (ABS(distance.y)))
-		steps = ABS(distance.x);
+	if ((fabs(distance.x)) > (fabs(distance.y)))
+		steps = fabs(distance.x);
 	else
-		steps = ABS(distance.y);
+		steps = fabs(distance.y);
 	increment.x = distance.x / steps;
 	increment.y = distance.y / steps;
 	i = 0;
