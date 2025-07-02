@@ -6,17 +6,17 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 12:23:15 by jquicuma          #+#    #+#             */
-/*   Updated: 2025/06/29 13:41:26 by user             ###   ########.fr       */
+/*   Updated: 2025/06/29 14:13:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRE_PROC
 # define PRE_PROC
 
-# define SPEED 5
+# define SPEED 1
 # define SCREEN_WID 640
 # define SCREEN_HEI 400
-# define TILE 25
+# define TILE 5
 # define PI 3.14159265359
 
 /*
